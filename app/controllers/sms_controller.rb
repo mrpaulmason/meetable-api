@@ -1,3 +1,5 @@
+require 'twilio-ruby'
+
 class SmsController < ApplicationController
 	def reply
 		message_body = params["Body"]
