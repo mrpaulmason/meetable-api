@@ -4,7 +4,8 @@ class ResponseService
 	end
 
 	def new_meeting(name:)
-		Meeting.new(user_id: @user.id)
-		return ["Date/time & place type?"]
+		m = Meeting.new(user_id: @user.id)
+		m.save
+		return ["Date/time & place type?","http://meetable.com/#{m.share_code}"]
 	end
 end
