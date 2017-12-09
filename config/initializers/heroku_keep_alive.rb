@@ -1,5 +1,5 @@
 require 'rufus/scheduler'
-scheduler = Rufus::Scheduler.start_new
+scheduler = Rufus::Scheduler.new
 
 if Rails.env.production?
   scheduler.every '10m' do
