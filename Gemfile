@@ -38,4 +38,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'rails_serve_static_assets'
 gem 'rails_stdout_logging'
 gem 'twilio-ruby'
+gem 'rufus-scheduler'
 
