@@ -34,7 +34,8 @@ class SmsController < ApplicationController
 		user = User.find_or_create_by(phone_number: params["phone_number"])
 		meeting = Meeting.find_by_share_code(params['ref'])
 		meeting.invitee_id = user.id
-		msg = {:status => 200}
+		meeting.save
+		msg = {:status => 200, :message => ""}
 		render :json => msg
 	end
 end
