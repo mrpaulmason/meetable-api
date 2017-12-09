@@ -23,4 +23,19 @@ class SmsController < ApplicationController
 			)
 		end
 	end
+
+	def accept 
+		no_ref_msg = {:status => 400, :message => 'Could not find referal'}
+		render :json => no_ref_msg unless Meeting.find_by_share_code(params['ref']) 
+		
+		no_user_msg = {:status => 400, :message => 'Could not create user'}
+		render :json => no_user_msg unless params.has_key?("phone_number") 
+		
+		user = User.find_or_create_by(phone_number: params["phone_number"])
+		meeting = Meeting.find_by_share_code(params['ref'])
+		meeting.invitee_id = user.id
+		meeting.save
+		msg = {:status => 200, :message => ""}
+		render :json => msg
+	end
 end
