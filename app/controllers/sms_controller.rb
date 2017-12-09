@@ -24,10 +24,10 @@ class SmsController < ApplicationController
 		end
 	end
 
-	def accept
-		# find/create the new user 
-		#user = User.find_or_create_by(phone_number: params["phone_number"])
-		puts params
+	def accept 
+		no_user_msg = {:status => 400, :message => 'Could not create user'}
+		render :json => no_user_msg unless params.has_key?("phone_number") 
+		user = User.find_or_create_by(phone_number: params["phone_number"])
 
 		# add the user as the invitee to the meeting
 	end
