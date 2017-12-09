@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  time: MyString
+  date: 2017-12-08
+  location_type: MyString
+  share_code: MyString
+
+two:
+  user_id: 1
+  time: MyString
+  date: 2017-12-08
+  location_type: MyString
+  share_code: MyString
