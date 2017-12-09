@@ -26,5 +26,25 @@ class Wit
 			end
 			post("/samples?v=#{version}", :body => body.to_json, :headers => headers)
 		end
+
+		def add_entities 
+			entities = File.readlines("#{Rails.root}/app/models/nlp/entities.txt")
+			entities.each do |e|
+				body = {:id => e.strip}
+				post("/entities?v=#{version}", :body => body.to_json, :headers => headers)
+			end
+		end
+
+		def add_location_type
+			body = []
+			b = {:text => "b", :entities => [:entity => 'location_type', :value => "bar"]}
+			body << b
+			c = {:text => "c", :entities => [:entity => 'location_type', :value => "coffee"]}
+			body << c
+			r = {:text => "r", :entities => [:entity => 'location_type', :value => "restaurant"]}
+			body << r
+
+			post("/samples?v=#{version}", :body => body.to_json, :headers => headers)
+		end
 	end
 end

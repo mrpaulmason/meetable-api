@@ -8,8 +8,6 @@ class Meeting < ApplicationRecord
 	end
 
 	def clean
-		self.date = self.date.strip unless self.date.nil?
-		self.time = self.time.strip unless self.time.nil?
 		self.location_type = self.location_type.strip unless self.location_type.nil?
 	end
 end

@@ -6,8 +6,7 @@ class SmsController < ApplicationController
 		message = params["Body"]
 		wit = Wit.message(message: message)
 		intent = wit[:entities].has_key?(:intent) ? wit[:entities][:intent].first[:value] : nil
-		response_service = ResponseService.new(user: user, message: message)
-
+		response_service = ResponseService.new(user: user, wit: wit)
 		responses = []
 		case intent 
 		when 'new'
@@ -15,7 +14,6 @@ class SmsController < ApplicationController
 		else
 			responses ["Hello there, thanks for texting me. Your number is #{from_number}."]
 		end
-		
 		client = Twilio::REST::Client.new ENV['TWILIO_SID'], ENV['TWILIO_TOKEN']
 		responses.each do |response|
 			sms = client.messages.create(
@@ -24,6 +22,5 @@ class SmsController < ApplicationController
 				body: response
 			)
 		end
-		
 	end
 end
