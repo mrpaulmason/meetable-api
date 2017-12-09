@@ -23,4 +23,12 @@ class SmsController < ApplicationController
 			)
 		end
 	end
+
+	def accept
+		# find/create the new user 
+		#user = User.find_or_create_by(phone_number: params["phone_number"])
+		puts params
+
+		# add the user as the invitee to the meeting
+	end
 end

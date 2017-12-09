@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   	resource :sms do
 	  	collection do
 	    	post 'reply'
+	    	post 'accept'
 	  	end
 	end
 end
