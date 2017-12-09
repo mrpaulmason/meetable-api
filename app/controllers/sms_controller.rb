@@ -4,23 +4,25 @@ class SmsController < ApplicationController
 	def reply
 		user = User.find_or_create_by(phone_number: params["From"])
 		message = params["Body"]
+		wit = Wit.message(message: message)
+		intent = wit[:entities].has_key?(:intent) ? wit[:entities][:intent].first[:value] : nil
 		response_service = ResponseService.new(user: user, message: message)
 
 		responses = []
-		case message.downcase 
-		when /\Aqq/
-			responses = response_service.new_meeting(name: message.remove("qq").strip)
+		case intent 
+		when 'new'
+			responses = response_service.new_meeting
 		else
 			responses ["Hello there, thanks for texting me. Your number is #{from_number}."]
 		end
 		
-		client = Twilio::REST::Client.new 'AC159ea454d65ec3c5d443d7da8d4b5644', '301b4fd074ff17b541a42962725bab3c'
+		client = Twilio::REST::Client.new ENV['TWILIO_SID'], ENV['TWILIO_TOKEN']
 		responses.each do |response|
 			sms = client.messages.create(
-			from: '+16467599030',
-			to: user.phone_number,
-			body: response
-		)
+				from: ENV['TWILIO_NUMBER'],
+				to: user.phone_number,
+				body: response
+			)
 		end
 		
 	end
