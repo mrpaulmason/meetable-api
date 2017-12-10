@@ -28,7 +28,7 @@ class Wit
 		end
 
 		def add_entities 
-			entities = File.readlines("#{Rails.root}/app/models/nlp/entities.txt")
+			entities = ["location_type","first_name"]
 			entities.each do |e|
 				body = {:id => e.strip}
 				post("/entities?v=#{version}", :body => body.to_json, :headers => headers)
@@ -46,5 +46,16 @@ class Wit
 
 			post("/samples?v=#{version}", :body => body.to_json, :headers => headers)
 		end
+
+		def add_names
+			body = []
+			keywords = File.readlines("#{Rails.root}/app/models/nlp/first_names.txt")
+			keywords.each do |k|
+				e = {:text => k.downcase.strip, :entities => [{:entity => 'first_name', :value => k.downcase.strip}]}
+				body << e
+			end
+			post("/samples?v=#{version}", :body => body.to_json, :headers => headers)
+		end
+
 	end
 end
