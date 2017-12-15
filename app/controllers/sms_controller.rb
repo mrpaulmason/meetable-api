@@ -39,7 +39,6 @@ class SmsController < ApplicationController
 		client = Twilio::REST::Client.new ENV['TWILIO_SID'], ENV['TWILIO_TOKEN']
 		client.messages.create(from: ENV['TWILIO_NUMBER'], to: user.phone_number, body: "Welcome to Meetable!")
 		client.messages.create(from: ENV['TWILIO_NUMBER'], to: user.phone_number, media_url: "https://nameless-bastion-55310.herokuapp.com/vcard")
-			
 
 		msg = {:status => 200, :message => ""}
 		render :json => msg
