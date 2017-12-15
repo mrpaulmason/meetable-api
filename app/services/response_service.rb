@@ -21,6 +21,6 @@ class ResponseService
 		
 		m = Meeting.new(user_id: @user.id, date_time: date_time, location_type: location_type)
 		m.save
-		["Send this link to #{name}:","http://meetable.ai/#{m.share_code}"]
+		["Send this link to #{name}:","http://meetable.ai/invite?m=#{m.share_code}"]
 	end
 end
