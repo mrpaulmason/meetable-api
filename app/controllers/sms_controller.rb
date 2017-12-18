@@ -43,7 +43,7 @@ class SmsController < ApplicationController
 		if meeting.save
 			client = Twilio::REST::Client.new ENV['TWILIO_SID'], ENV['TWILIO_TOKEN']
 			client.messages.create(from: ENV['TWILIO_NUMBER'], to: user.phone_number, body: "Welcome to Meetable!")
-			client.messages.create(from: ENV['TWILIO_NUMBER'], to: user.phone_number, media_url: "https://nameless-bastion-55310.herokuapp.com/vcard")
+			client.messages.create(from: ENV['TWILIO_NUMBER'], to: user.phone_number, media_url: "https://meetable-api.herokuapp.com/vcard")
 			
 			msg = {:status => 200, :message => "OK"}
 			render :json => msg
