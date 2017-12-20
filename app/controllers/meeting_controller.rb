@@ -19,14 +19,14 @@ class MeetingController < ApplicationController
                 client.messages.create(from: ENV['TWILIO_NUMBER'], to: user.phone_number, body: "Welcome to Meetable!")
                 client.messages.create(from: ENV['TWILIO_NUMBER'], to: user.phone_number, media_url: "https://meetable-api.herokuapp.com/vcard")
             rescue
-                render :json => render APIResponse.response(type: "error")
+                render :json => APIResponse.response(type: "error")
                 return
             end
 
-            render :json => render APIResponse.response(type: "ok")
+            render :json => APIResponse.response(type: "ok")
             return
         end
 
-        render APIResponse.response(type: "error")
+        render :json => APIResponse.response(type: "error")
     end
 end

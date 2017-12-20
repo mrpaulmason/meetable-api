@@ -5,7 +5,7 @@ error:
   status: 400
   message: There was an error, please try again
 invalid_referral_code:
-  status: 400
+  status: 404
   message: Sorry, this code is invalid.
 invalid_phone_number:
   status: 400
