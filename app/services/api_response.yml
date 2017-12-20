@@ -4,6 +4,9 @@ ok:
 error:
   status: 400
   message: There was an error, please try again
+twilio_error:
+  status: 500
+  message:  There was an error with Twilio.
 invalid_referral_code:
   status: 404
   message: Sorry, this code is invalid.
