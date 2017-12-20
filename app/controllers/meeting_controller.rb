@@ -1,9 +1,9 @@
 class MeetingController < ApplicationController
-	def accept 
-        unless meeting = Meeting.find_by_share_code(params[:id]) render :json => APIResponse.response(type: "invalid_referral_code") and return 
-        unless params.has_key? "phone_number" render :json => APIResponse.response(type: "invalid_phone_number") and return
+	def accept  
+       	render :json => APIResponse.response(type: "invalid_referral_code") and return unless meeting = Meeting.find_by_share_code(params[:id])
+        render :json => APIResponse.response(type: "invalid_phone_number") and return unless user = User.find_or_create_by(phone_number: params["phone_number"])
         
-        user = User.find_or_create_by(phone_number: params["phone_number"])
+        meeting = Meeting.find_by_share_code(params[:id])
         meeting.invitee_id = user.id
         
         if meeting.save
@@ -12,8 +12,7 @@ class MeetingController < ApplicationController
                 client.messages.create(from: ENV['TWILIO_NUMBER'], to: user.phone_number, body: "Welcome to Meetable!")
                 client.messages.create(from: ENV['TWILIO_NUMBER'], to: user.phone_number, media_url: "https://meetable-api.herokuapp.com/vcard")
             rescue => e
-                render :json => APIResponse.response(type: "twilio_error") and return 
-                return
+                render :json => APIResponse.response(type: "twilio_error") and return
             end
 
             render :json => APIResponse.response(type: "ok") and return
