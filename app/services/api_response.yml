@@ -13,3 +13,6 @@ invalid_referral_code:
 invalid_phone_number:
   status: 400
   message: Sorry, please provide a valid phone number.
+invalid_email:
+  status: 400
+  message: Sorry, please provide a valid email.

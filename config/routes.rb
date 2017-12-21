@@ -8,4 +8,9 @@ Rails.application.routes.draw do
 	    	post 'accept'
 	  	end
 	end
+	resource :waitlist do
+	  	collection do
+	    	post 'create'
+	  	end
+	end
 end
