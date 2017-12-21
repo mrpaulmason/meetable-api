@@ -11,7 +11,7 @@ class WaitlistController < ApplicationController
 	end
 
 	private
-    # Only allow a trusted parameter "white list" through.
+    
     def waitlist_params
       params.permit(:email, :survey)
     end
