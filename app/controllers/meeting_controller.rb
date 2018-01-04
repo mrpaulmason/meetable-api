@@ -20,4 +20,10 @@ class MeetingController < ApplicationController
 
         render :json => APIResponse.response(type: "error")
     end
+
+    def locations
+        render :json => APIResponse.response(type: "invalid_referral_code") and return unless meeting = Meeting.find_by_share_code(params[:id])
+
+        render :json => Places.list
+    end
 end
