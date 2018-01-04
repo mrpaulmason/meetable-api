@@ -1,8 +1,18 @@
 Rex Coffee:
   address: 864 10th Ave
+  latitude: 40.768814
+  longitude: -73.988519
   categories: [coffee]
   attributes: [coffee, bar]
 Kashkaval:
-  address: 864 10th Ave
-  categories: [coffee]
+  address: 852 9th Ave
+  latitude: 40.766761
+  longitude: -73.986194
+  categories: [restaurant]
+  attributes: [restaurant, cocktails]
+Annabel:
+  address: 809 9th Ave
+  latitude: 40.765797
+  longitude: -73.987556
+  categories: [restaurant]
   attributes: [restaurant, cocktails]
