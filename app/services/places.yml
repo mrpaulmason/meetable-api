@@ -1,0 +1,8 @@
+Rex Coffee:
+  address: 864 10th Ave
+  categories: [coffee]
+  attributes: [coffee, bar]
+Kashkaval:
+  address: 864 10th Ave
+  categories: [coffee]
+  attributes: [restaurant, cocktails]
