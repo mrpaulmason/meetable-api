@@ -1,18 +1,390 @@
-Rex Coffee:
-  address: 864 10th Ave
-  latitude: 40.768814
-  longitude: -73.988519
-  categories: [coffee]
-  attributes: [coffee, bar]
-Kashkaval:
-  address: 852 9th Ave
-  latitude: 40.766761
-  longitude: -73.986194
-  categories: [restaurant]
-  attributes: [restaurant, cocktails]
-Annabel:
-  address: 809 9th Ave
-  latitude: 40.765797
-  longitude: -73.987556
-  categories: [restaurant]
-  attributes: [restaurant, cocktails, pizza]
+b:
+  ids: [
+    ChIJfeab64RZwokRUs0MziEuwYk, 
+    ChIJoZPin0VawokRilJi0l11ubA,
+    ChIJ3SY60u5YwokRU9T-obR5cXY,
+    ChIJ73jk7Y5ZwokR8XknCWHfDKg,
+    ChIJ4T3bPptZwokRxMTOwDwXsOw,
+    ChIJtSjFCfNZwokRMW-KSzp4o4c,
+    ChIJIxGjE4FZwokRbIKYbuEwRxg
+  ]
+c:
+  ids: [
+    ChIJTfl0qb5ZwokRJ0MBMDTunb4,
+    ChIJNyeRPblZwokR7dKwN4Pcy64,
+    ChIJIa3vw19ZwokR6gAqP0kXg4A,
+    ChIJbTCMl19ZwokRUohF137p9cQ,
+    ChIJ-1Fkkl9ZwokR47Tu0jZx7aA,
+    ChIJ986BIQhZwokRWx8t-bv53Xk,
+    ChIJrXEiw4NZwokRxp0-JU8sJ-I,
+    ChIJ_-JwoItZwokRoptvAsv5Waw,
+    ChIJ1fm1DYtZwokRdj4koR4ZDBU,
+    ChIJD6vUMlpZwokRSFeGSBW_gvU,
+    ChIJs40B8HZZwokRWbU14JJr_y8,
+    ChIJ1VKFUpZZwokRVPmHHaBSp6A,
+    ChIJhVYlJL9ZwokRxZgXSlJeLH8,
+    ChIJh6FtgLdbwokR2vyYeOM7Pyc,
+    ChIJazunFWT2wokRqVgH0HhWeGQ,
+    ChIJuYwVAmX2wokRTnBiQLDD6us,
+    ChIJFWthXZRZwokRlr_SqyfeCa4,
+    ChIJoZPin0VawokRilJi0l11ubA,
+    ChIJ3SY60u5YwokRU9T-obR5cXY,
+    ChIJXVjj4FlYwokRI7gc8eLrDec,
+    ChIJ73jk7Y5ZwokR8XknCWHfDKg,
+    ChIJUw68EZJZwokRJ15RD_T4OTw,
+    ChIJrRDdvIhZwokRp0CotyHQ8NM,
+    ChIJbafTz6VZwokRMOYaspUwj28,
+    ChIJi73FVqNbwokRZ4KIqLtNoFw,
+    ChIJQSWR-btZwokRpWf5n3kwBMo,
+    ChIJSyYvYZRZwokR6tWSvOA2xXw,
+    ChIJq4E5ZL5ZwokRqPyhY3I66pk
+  ]
+d:
+  ids: [
+    ChIJbafTz6VZwokRMOYaspUwj28,
+    ChIJk7o2RPVZwokRYnzP1CplFKk,
+    ChIJ-f2BI5RZwokRTNQFjW1ZSmg
+  ]
+e:
+  ids: [
+    ChIJKWfvx5xZwokRpeSAmKP10Sg,
+    ChIJXzIEmbtbwokR6TOSZYne8UI,
+    ChIJkcR245tZwokRGYfd6Y0EYig,
+    ChIJ4T3bPptZwokRxMTOwDwXsOw
+  ]
+f:
+  ids: [
+    ChIJ8eEu0JxZwokRNFpDI_HBFmc
+  ]
+g:
+  ids: [
+    ChIJyQcAq55ZwokRrPQj9o7eMWc,
+    ChIJ8eEu0JxZwokRNFpDI_HBFmc,
+    ChIJ5fW8U5ZZwokRlk_uZ6uLlgg
+  ]
+h:
+  ids: [
+    ChIJszWINqNbwokRMNSMRt0MOJk,
+    ChIJ9ajN9btZwokRIxQws60QJq8,
+    ChIJOTob_r1bwokRtUoNNbcmw_g,
+    ChIJP8URcY5ZwokRhFpdfNcK-FI,
+    ChIJIXmQFYxZwokRhxGPUQv0TRk,
+    ChIJKWfvx5xZwokRpeSAmKP10Sg,
+    ChIJz-RDxFBawokRMEYCnoHxrQQ
+  ]
+i:
+  ids: [
+    ChIJBxc8r51ZwokRWBJUEbG_SoE,
+    ChIJSyYvYZRZwokR6tWSvOA2xXw,
+    ChIJHfvtRp1ZwokREpFE8Z1BEKs,
+    ChIJXZCzR5hZwokRV2dYo9jwG14,
+    ChIJiextKI1ZwokRKTNKS2BGVRs,
+    ChIJrRDdvIhZwokRp0CotyHQ8NM,
+    ChIJTXEMkIZZwokRrCyMDjtZFSg,
+    ChIJWc_SQr9ZwokR6dLt4P0AGps,
+    ChIJq4E5ZL5ZwokRqPyhY3I66pk,
+    ChIJGybwwHlZwokR2T7HzYQqhvU,
+  ]
+j:
+  ids: [
+    ChIJbxudM_ZYwokRNZbwXK-_GzE,
+    ChIJhVYlJL9ZwokRxZgXSlJeLH8,
+    ChIJ4equ8olZwokRHEn8MagHhkw,
+    ChIJqzkICohZwokR456MkSkZnLU,
+    ChIJkxySHfZYwokR3DoJ1rVZw_Q,
+    ChIJuac4MpdZwokRPSTvSd3DmME
+  ]
+k:
+  ids: [
+    ChIJFWthXZRZwokRlr_SqyfeCa4,
+    ChIJ9azGZ5RZwokRKkfKjaYGszg
+  ]
+l:
+  ids: [
+    ChIJbbRORIFZwokRw9LsCA8TKvg,
+    ChIJE_M9pU1awokRDf2aEI27qWU,
+    ChIJFS9HOFpZwokR3qp0bGrFJlY,
+    ChIJR9WOyUhZwokRYi90_KCKC0w,
+    ChIJwfjyaetZwokRTDXEUa-gpOQ,
+    ChIJIxGjE4FZwokRbIKYbuEwRxg,
+    ChIJhV1tboZZwokRCNghkde1e2w
+  ]
+m:
+  ids: [
+    ChIJO_DTSCpawokR8ueqrPAl8QI
+  ]
+nn:
+  ids: [
+    ChIJ2_qXxFBawokRGJ8V9SLdS88,
+    ChIJdQpAR71ZwokRkeF531Jk8_Q,
+    ChIJ7R4tgLtZwokRM8thlhlzE2o,
+    ChIJ1fm1DYtZwokRdj4koR4ZDBU,
+    ChIJ7c_AKQdZwokRoLcUwogezK4,
+    ChIJA9c33pxZwokRzubVjQK9pFM,
+    ChIJzeWUWndZwokRyAM_ckmcdDY,
+    ChIJf7ofYYhZwokR-KS8X7CpPV8,
+    ChIJt3dnRtVbwokRV9pqnYHmhRw,
+    ChIJpYdmWetZwokRRuyT1SH44qk,
+    ChIJy6rdX7hZwokRYmiVJWN3XmQ,
+    ChIJ_____49MwokRvQ8K9_f-8q8,
+    ChIJbSf_R5hZwokRsiFxyNhkkHo,
+    ChIJIXmQFYxZwokRhxGPUQv0TRk,
+    ChIJSyYvYZRZwokR6tWSvOA2xXw,
+    ChIJ7c9s1JZZwokRs_zFHYCtNDA,
+    ChIJuac4MpdZwokRPSTvSd3DmME,
+    ChIJ36W7DhRawokRlnblvodsHUo,
+    ChIJmzE1Y6tZwokRQLY6pr6tTDk,
+    ChIJ6QyMxUdZwokRALKVM6-NhGY,
+    ChIJRYYAbtRYwokR2nAf_pak0lM,
+    ChIJ9_eCW6ZZwokRq0OOMD-5Tdc,
+    ChIJiZW9FI5ZwokRZbM7wIIzgKE,
+    ChIJ2x9X5b1ZwokRxgCbZGuyoyo,
+    ChIJVQZ5bif2wokRdOKgFt-pfL4,
+    ChIJE3T7VLtYwokR_e4q0PZD-2Q,
+    ChIJXWr5O5lZwokRzroDGzxfyC8,
+    ChIJ6fMuIIVZwokREpOIPZMzxWk,
+    ChIJ1atSGIVZwokRmyJxm9r4OdQ,
+    ChIJyfPliKBZwokRwhKoJy9nKRU,
+    ChIJS-gkDZBZwokRTU47k4eihtE,
+    ChIJH3MoCspZwokRbK5_rw0-0dM,
+    ChIJKw_sQkxYwokR0xXDnzqscHM,
+    ChIJaR0w9iBawokRGwkdqcC9EPk,
+    ChIJ4b7t-VhZwokR6lBBJOB9MbM,
+    ChIJ0eBWu4FZwokRQRQ3vliDTtc,
+    ChIJoxhol8BZwokRl9-oETldRug,
+    ChIJ7_CZzWBZwokR7b6tc1xIiNU,
+    ChIJfYfBk_tYwokRozvC5UCvOWM,
+    ChIJhzz6b_9bwokRSNR5yQ3CyTw,
+    ChIJ489PWQFbwokRVD457i0GA2g,
+    ChIJNeBxP5xZwokRZpyF4eW156g,
+    ChIJITzs6ppZwokRS5MAY3a5ee0,
+    ChIJ8wF3FI9ZwokRrz0RxZ6u9HY,
+    ChIJBaNI0o1ZwokRwWENuLFqsUY,
+    ChIJNRSB1_JZwokRYW_A3fPF5nA,
+    ChIJPWpv9IpZwokRyO_TqOA2hbo,
+    ChIJ3Xrz-apZwokRlXC_woD9axg,
+    ChIJWVyGN7ZZwokRNdowWcjXY_E,
+    ChIJMwm7aRZawokR9y8LTeJddIc,
+    ChIJXeEtRpRZwokRiB3XgC8ccO0,
+    ChIJHy0ZlqNZwokRABxBCQR_37o,
+    ChIJ0zAa911ZwokRQlmIU8v4Kzs,
+    ChIJQ0MAdylZwokRTl8FGknAU3s,
+    ChIJs_ON7LlZwokRmKAaVhqevLo,
+    ChIJOzyVqZZZwokRbNBEKeJZADs,
+    ChIJ7XHt0fJZwokR1C5iXSBhWPg,
+    ChIJD-OsjDdawokRhEFpbz46DVo,
+    ChIJn7pORZJZwokRSjiJ7fyALss,
+    ChIJ1fPJMu1ZwokR9bAptiISZfs,
+    ChIJuc3pNHhZwokRElF6XZROZes,
+  ]
+o:
+  ids: [
+    ChIJo1UOPqdbwokRgzXX1J0yTxI,
+    ChIJqcBRcLhbwokRW73jQc21c1E,
+    ChIJ-f2BI5RZwokRTNQFjW1ZSmg,
+    ChIJXVjj4FlYwokRI7gc8eLrDec,
+    ChIJhwGMf4hZwokRbWtGa1xsYcg,
+    ChIJWaWbwHlZwokRj1wHkvB84zE,
+    ChIJgYBqap1ZwokR3gJt8gxAwuQ,
+    ChIJzyLfYZFZwokRxNX_OjJLoRM,
+    ChIJlaFjTURZwokRvsN6V805OEk,
+    ChIJyXHHyfZawokRm6SBxpOHUxY,
+    ChIJ__u3R6tbwokRYMOym8O83H0,
+    ChIJE6U0R0BZwokRqbil1N5FfAM,
+    ChIJz_sC_V5ZwokRlw2ddh4s9ns,
+    ChIJU7yuOVVYwokRFBr9hRPoE2w,
+    ChIJaV0zg6RZwokRQrFS6No9JbQ,
+    ChIJ9QA8ga1bwokRUApSQ5I0k2w,
+    ChIJhV1tboZZwokRCNghkde1e2w,
+  ]
+p: 
+  ids: [
+    ChIJWbbWh7xZwokRZNl-bzhPR5E,
+    ChIJQwDts4NZwokR1G-QaglL6H0,
+    ChIJpbUvzpRZwokR17FBRiyTRTY,
+    ChIJkcR245tZwokRGYfd6Y0EYig,
+    ChIJ4T3bPptZwokRxMTOwDwXsOw
+  ]
+q:
+  ids: [
+    ChIJKUdr071bwokRfoxllC4K8-I,
+    ChIJOeTwQ7BbwokRZrDwTtEXYHA,
+    ChIJszWINqNbwokRMNSMRt0MOJk,
+    ChIJWbbWh7xZwokRZNl-bzhPR5E,
+    ChIJcTnRKLlZwokRT8ZXt9W9cgw,
+    ChIJ_ar-yZVbwokRtr_5W6WIZ98,
+    ChIJG-GNokVawokRw5Wz0_cHxbU,
+    ChIJo1UOPqdbwokRgzXX1J0yTxI,
+    ChIJE1A7ph9awokReG2OZSuar5o,
+    ChIJfeab64RZwokRUs0MziEuwYk,
+    ChIJM2JhFptZwokR2D7Sa8O4ack,
+    ChIJa1-2gwRcwokRpzd-K1vBVew,
+    ChIJRy7Z-I1ZwokRQm17a6QDJ6E,
+    ChIJocHR_5hbwokRhrkzefz4tf0,
+    ChIJgXfREIVZwokRDCko9kidLdY,
+    ChIJ1bpep2L2wokRjaoBxorAv1Q,
+    ChIJ-f2BI5RZwokRTNQFjW1ZSmg,
+    ChIJGSQSj5ZZwokRDBow8ApgDQQ,
+    ChIJiyy1ZZRZwokRcP17CkI6abE,
+    ChIJGaAyS4hZwokRzKiuS8sNU0A,
+    ChIJoZPin0VawokRilJi0l11ubA,
+    ChIJE1SK5LtYwokRH1APiOrZNq0,
+    ChIJj2-tnutZwokRHA-YXJ8Fz5g,
+    ChIJO_DTSCpawokR8ueqrPAl8QI,
+    ChIJN3_kAaZZwokRkaD4IOGxHNM,
+    ChIJm3QDH-tZwokRPSaMw09Zxv4,
+    ChIJ4equ8olZwokRHEn8MagHhkw,
+    ChIJhwGMf4hZwokRbWtGa1xsYcg,
+    ChIJC8CwMYZZwokR37dlMWCJJt8,
+    ChIJuac4MpdZwokRPSTvSd3DmME,
+    ChIJN1zwQJxZwokRNFh2jY9GrVM,
+    ChIJtSjFCfNZwokRMW-KSzp4o4c,
+    ChIJk7o2RPVZwokRYnzP1CplFKk,
+    ChIJq10o4HlZwokRG2PR7NUrOIo,
+    ChIJlaFjTURZwokRvsN6V805OEk,
+    ChIJ__u3R6tbwokRYMOym8O83H0,
+    ChIJE6U0R0BZwokRqbil1N5FfAM,
+    ChIJU7yuOVVYwokRFBr9hRPoE2w,
+    ChIJhV1tboZZwokRCNghkde1e2w,
+  ]
+r:
+  ids: [
+    ChIJN1zwQJxZwokRNFh2jY9GrVM
+  ]
+s:
+  ids: [
+    ChIJcTnRKLlZwokRT8ZXt9W9cgw,
+    ChIJ_ar-yZVbwokRtr_5W6WIZ98,
+    ChIJFS9HOFpZwokR3qp0bGrFJlY,
+    ChIJM2JhFptZwokR2D7Sa8O4ack,
+    ChIJH5eM2UhZwokRD_6fdnugakM,
+    ChIJb6KTyodZwokRX2TgJbvvvKg,
+    ChIJmU4QDaZZwokRJMu8riAhVv0,
+    ChIJ4equ8olZwokRHEn8MagHhkw,
+    ChIJC8CwMYZZwokR37dlMWCJJt8
+  ]
+t:
+  ids: [
+    ChIJ986BIQhZwokRWx8t-bv53Xk,
+ChIJ_-JwoItZwokRoptvAsv5Waw,
+ChIJ1fm1DYtZwokRdj4koR4ZDBU,
+ChIJf7ofYYhZwokR-KS8X7CpPV8,
+ChIJ256pFiBawokR-JFcFPAz7Ig,
+ChIJP8URcY5ZwokRhFpdfNcK-FI,
+ChIJe_ZBhY1ZwokRGAEwGLWYpA8,
+ChIJ_____49MwokRvQ8K9_f-8q8,
+ChIJSyYvYZRZwokR6tWSvOA2xXw,
+ChIJXeEtRpRZwokRiB3XgC8ccO0,
+ChIJ0zAa911ZwokRQlmIU8v4Kzs,
+ChIJQ0MAdylZwokRTl8FGknAU3s,
+ChIJn7pORZJZwokRSjiJ7fyALss,
+ChIJ1fPJMu1ZwokR9bAptiISZfs,
+ChIJuc3pNHhZwokRElF6XZROZes,
+ChIJU7yuOVVYwokRFBr9hRPoE2w,
+  ]
+u:
+  ids: [
+    ChIJq10o4HlZwokRG2PR7NUrOIo
+  ]
+v: 
+  ids: [
+    ChIJIXmQFYxZwokRhxGPUQv0TRk,
+ChIJSyYvYZRZwokR6tWSvOA2xXw,
+ChIJdQpAR71ZwokRkeF531Jk8_Q,
+ChIJ6fMuIIVZwokREpOIPZMzxWk,
+ChIJ1atSGIVZwokRmyJxm9r4OdQ,
+ChIJXWr5O5lZwokRzroDGzxfyC8,
+ChIJyfPliKBZwokRwhKoJy9nKRU,
+ChIJS-gkDZBZwokRTU47k4eihtE,
+ChIJH3MoCspZwokRbK5_rw0-0dM,
+ChIJKw_sQkxYwokR0xXDnzqscHM,
+ChIJaR0w9iBawokRGwkdqcC9EPk,
+ChIJ4b7t-VhZwokR6lBBJOB9MbM,
+ChIJA9c33pxZwokRzubVjQK9pFM,
+ChIJXeEtRpRZwokRiB3XgC8ccO0,
+  ]
+w: 
+  ids: [
+    ChIJy_M6GlBawokRMQEnqU8EHOg,
+ChIJva3gYZtbwokRhLP1H9CcRyU,
+ChIJi73FVqNbwokRZ4KIqLtNoFw,
+ChIJszWINqNbwokRMNSMRt0MOJk,
+ChIJNyeRPblZwokR7dKwN4Pcy64,
+ChIJcTnRKLlZwokRT8ZXt9W9cgw,
+ChIJBxc8r51ZwokRWBJUEbG_SoE,
+ChIJIa3vw19ZwokR6gAqP0kXg4A,
+ChIJ-1Fkkl9ZwokR47Tu0jZx7aA,
+ChIJj1V4jV9ZwokRPV-chY9-Jx0,
+ChIJrXEiw4NZwokRxp0-JU8sJ-I,
+ChIJOTob_r1bwokRtUoNNbcmw_g,
+ChIJ_ar-yZVbwokRtr_5W6WIZ98,
+ChIJG-GNokVawokRw5Wz0_cHxbU,
+ChIJ256pFiBawokR-JFcFPAz7Ig,
+ChIJE1A7ph9awokReG2OZSuar5o,
+ChIJFS9HOFpZwokR3qp0bGrFJlY,
+ChIJD6vUMlpZwokRSFeGSBW_gvU,
+ChIJw7ruVp1ZwokRaDxlXE7lURs,
+ChIJs40B8HZZwokRWbU14JJr_y8,
+ChIJObMZS51ZwokR0ffmCsI0qFQ,
+ChIJP8URcY5ZwokRhFpdfNcK-FI,
+ChIJ1VKFUpZZwokRVPmHHaBSp6A,
+ChIJe_ZBhY1ZwokRGAEwGLWYpA8,
+ChIJR9WOyUhZwokRYi90_KCKC0w,
+ChIJDbQMBIdZwokRVS4L8B8V5SA,
+ChIJhVYlJL9ZwokRxZgXSlJeLH8,
+ChIJM2JhFptZwokR2D7Sa8O4ack,
+ChIJa1-2gwRcwokRpzd-K1vBVew,
+ChIJRy7Z-I1ZwokRQm17a6QDJ6E,
+ChIJocHR_5hbwokRhrkzefz4tf0,
+ChIJH5eM2UhZwokRD_6fdnugakM,
+ChIJeXkk5qdewokRPjp8s5BDauo,
+ChIJqcBRcLhbwokRW73jQc21c1E,
+ChIJh6FtgLdbwokR2vyYeOM7Pyc,
+ChIJgXfREIVZwokRDCko9kidLdY,
+ChIJXzIEmbtbwokR6TOSZYne8UI,
+ChIJ-f2BI5RZwokRTNQFjW1ZSmg,
+ChIJGSQSj5ZZwokRDBow8ApgDQQ,
+ChIJGaAyS4hZwokRzKiuS8sNU0A,
+ChIJq38lzVVYwokRSQFHWasfeqc,
+ChIJoZPin0VawokRilJi0l11ubA,
+ChIJtRe2iHhZwokRIxa-bPRoumg,
+ChIJE1SK5LtYwokRH1APiOrZNq0,
+ChIJ3SY60u5YwokRU9T-obR5cXY,
+ChIJXVjj4FlYwokRI7gc8eLrDec,
+ChIJUw68EZJZwokRJ15RD_T4OTw,
+ChIJj2-tnutZwokRHA-YXJ8Fz5g,
+ChIJy02UfE1awokR8dS5zwDOTyI,
+ChIJmU4QDaZZwokRJMu8riAhVv0,
+ChIJrRDdvIhZwokRp0CotyHQ8NM,
+ChIJN0f2iJFZwokRt53h0ISm3eE,
+ChIJ4equ8olZwokRHEn8MagHhkw,
+ChIJkxySHfZYwokR3DoJ1rVZw_Q,
+ChIJC8CwMYZZwokR37dlMWCJJt8,
+ChIJk7o2RPVZwokRYnzP1CplFKk,
+ChIJ27CKRHdZwokRAMnhRQri-bU,
+ChIJq10o4HlZwokRG2PR7NUrOIo,
+  ]
+x: 
+  ids: [
+    ChIJ256pFiBawokR-JFcFPAz7Ig,
+ChIJf7ofYYhZwokR-KS8X7CpPV8,
+ChIJP8URcY5ZwokRhFpdfNcK-FI,
+ChIJ_____49MwokRvQ8K9_f-8q8,
+ChIJSyYvYZRZwokR6tWSvOA2xXw,
+ChIJuac4MpdZwokRPSTvSd3DmME,
+ChIJXeEtRpRZwokRiB3XgC8ccO0,
+ChIJ0zAa911ZwokRQlmIU8v4Kzs,
+ChIJQ0MAdylZwokRTl8FGknAU3s,
+ChIJn7pORZJZwokRSjiJ7fyALss,
+ChIJ1fPJMu1ZwokR9bAptiISZfs,
+ChIJuc3pNHhZwokRElF6XZROZes,
+ChIJU7yuOVVYwokRFBr9hRPoE2w,
+  ]
+yy:
+  ids: [
+    ChIJka6YlSlawokRMhN3aYCZWG0,
+ChIJK1yXQO9YwokRPj9clv8k-gQ,
+ChIJH3MoCspZwokRbK5_rw0-0dM,
+ChIJi_eyi6pZwokRFvY-ucXUXEk,
+ChIJWVyGN7ZZwokRNdowWcjXY_E,
+  ]
