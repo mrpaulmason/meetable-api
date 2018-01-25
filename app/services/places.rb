@@ -10,7 +10,8 @@ class Places
                     city: place.city, 
                     zip: place.zip, 
                     latitude: place.lat, 
-                    longitude: place.long
+                    longitude: place.long,
+                    google_id: place.google_id
                 }
             	output[:locations].push(location)
             end
