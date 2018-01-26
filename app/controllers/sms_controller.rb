@@ -11,6 +11,8 @@ class SmsController < ApplicationController
 		case intent 
 		when 'new'
 			responses = response_service.new_meeting
+		when 'relay'
+			responses = response_service.relay(to: params["Body"].split(" ").second)
 		else
 			responses ["Hello there, thanks for texting me. Your number is #{from_number}."]
 		end
@@ -39,6 +41,9 @@ class SmsController < ApplicationController
 			render :json => no_user_msg
 			return
 		end
+
+		user.first_name = meeting.nickname 
+		user.save
 		
 		meeting.invitee_id = user.id
 		if meeting.save
