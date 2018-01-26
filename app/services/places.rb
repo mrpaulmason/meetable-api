@@ -11,7 +11,9 @@ class Places
                     zip: place.zip, 
                     latitude: place.lat, 
                     longitude: place.long,
-                    google_id: place.google_id
+                    google_id: place.google_id,
+                    categories: place.categories,
+                    attributes: place.types
                 }
             	output[:locations].push(location)
             end
@@ -25,8 +27,8 @@ class Places
         def parse
             hash = YAML.load_file("#{Rails.root}/app/services/places.yml")
             hash.each do |k,v|
-                types = v["attributes"].to_a
-                categories = v["categories"].to_a
+                type = v["attribute"]
+                category = v["category"]
 
                 v["ids"].each do |id|
                     record = google.spot(id)
@@ -37,8 +39,8 @@ class Places
                     place.zip = record.address_components.last["short_name"]
                     place.lat = record.lat
                     place.long = record.lng
-                    #place.types.push(types)
-                    #place.categories.push(categories)
+                    place.types.push(type)
+                    place.categories.push(category)
                     place.save
                 end 
             end
