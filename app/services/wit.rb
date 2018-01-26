@@ -1,5 +1,6 @@
 class Wit
 	include HTTParty
+	require 'uri'
 
 	base_uri 'https://api.wit.ai'
 
@@ -13,7 +14,7 @@ class Wit
 		end
 
 		def message(message:)
-			response = get("/message?v=#{version}&q=#{message}", :headers => headers)
+			response = get("/message?v=#{version}&q=#{URI.encode(message)}", :headers => headers)
 			response.parsed_response.deep_symbolize_keys!
 		end
 
