@@ -25,6 +25,11 @@ class Places
         end
 
         def parse
+            Place.all.each do |place|
+                place.types = []
+                place.categories = []
+                place.save
+            end
             hash = YAML.load_file("#{Rails.root}/app/services/places.yml")
             hash.each do |k,v|
                 type = v["attribute"]
@@ -39,8 +44,14 @@ class Places
                     place.zip = record.address_components.last["short_name"]
                     place.lat = record.lat
                     place.long = record.lng
-                    place.types.push(type)
-                    place.categories.push(category)
+                    
+                    if !place.types.include? type
+                        place.types.push(type) if type
+                    end
+                    if !place.categories.include? category 
+                        place.categories.push(category) if category
+                    end
+                    
                     place.save
                 end 
             end

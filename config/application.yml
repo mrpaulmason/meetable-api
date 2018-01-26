@@ -5,7 +5,7 @@ default: &default
   WIT_TOKEN: 'U2TCQ2PH5BEPVEZEBQASZSNGI6FIN7ML'
   WEB_PING: 'https://meetable-ui.herokuapp.com/'
   API_PING: 'https://meetable-api.herokuapp.com/ping'
-  GOOGLE_API: 'AIzaSyArAP-zJnucH4wZEC1ZreshQPXx9YqCMWY'
+  GOOGLE_API: 'AIzaSyBoJwLLWMHpMdrpmuBdYB77dGGjoZprQ4I'
 
 development:
   <<: *default
