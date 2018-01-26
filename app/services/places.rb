@@ -1,7 +1,7 @@
 class Places
 	class << self
-        def list(category: '')
-            places = Place.all
+        def list(category:)
+            places = Place.where("'#{category}' = ANY (categories)")
             output = {locations: []}
             places.each do |place|
             	location = {
