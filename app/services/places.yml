@@ -1,4 +1,5 @@
 b:
+  attribute: Old New York
   ids: [
     ChIJfeab64RZwokRUs0MziEuwYk, 
     ChIJoZPin0VawokRilJi0l11ubA,
@@ -9,6 +10,8 @@ b:
     ChIJIxGjE4FZwokRbIKYbuEwRxg
   ]
 c:
+  category: drinks
+  attribute: Restaurants with Bar
   ids: [
     ChIJTfl0qb5ZwokRJ0MBMDTunb4,
     ChIJNyeRPblZwokR7dKwN4Pcy64,
@@ -40,12 +43,15 @@ c:
     ChIJq4E5ZL5ZwokRqPyhY3I66pk
   ]
 d:
+  category: drinks
+  attribute: Whiskey library
   ids: [
     ChIJbafTz6VZwokRMOYaspUwj28,
     ChIJk7o2RPVZwokRYnzP1CplFKk,
     ChIJ-f2BI5RZwokRTNQFjW1ZSmg
   ]
 e:
+  attribute: Hidden Gem
   ids: [
     ChIJKWfvx5xZwokRpeSAmKP10Sg,
     ChIJXzIEmbtbwokR6TOSZYne8UI,
@@ -53,16 +59,22 @@ e:
     ChIJ4T3bPptZwokRxMTOwDwXsOw
   ]
 f:
+  category: bar food
+  attribute: One food wonder
   ids: [
     ChIJ8eEu0JxZwokRNFpDI_HBFmc
   ]
 g:
+  category: food
+  attribute: Restaurants Fast Casual
   ids: [
     ChIJyQcAq55ZwokRrPQj9o7eMWc,
     ChIJ8eEu0JxZwokRNFpDI_HBFmc,
     ChIJ5fW8U5ZZwokRlk_uZ6uLlgg
   ]
 h:
+  category: food
+  attribute: Restaurants General
   ids: [
     ChIJszWINqNbwokRMNSMRt0MOJk,
     ChIJ9ajN9btZwokRIxQws60QJq8,
@@ -73,6 +85,8 @@ h:
     ChIJz-RDxFBawokRMEYCnoHxrQQ
   ]
 i:
+  category: drinks
+  attribute: Wine Bar
   ids: [
     ChIJBxc8r51ZwokRWBJUEbG_SoE,
     ChIJSyYvYZRZwokR6tWSvOA2xXw,
@@ -86,6 +100,8 @@ i:
     ChIJGybwwHlZwokR2T7HzYQqhvU,
   ]
 j:
+  category: drinks
+  attribute: Hotel Bars
   ids: [
     ChIJbxudM_ZYwokRNZbwXK-_GzE,
     ChIJhVYlJL9ZwokRxZgXSlJeLH8,
@@ -95,11 +111,14 @@ j:
     ChIJuac4MpdZwokRPSTvSd3DmME
   ]
 k:
+  attribute: Can be crowded
   ids: [
     ChIJFWthXZRZwokRlr_SqyfeCa4,
     ChIJ9azGZ5RZwokRKkfKjaYGszg
   ]
 l:
+  category: drinks
+  attribute: Bar General
   ids: [
     ChIJbbRORIFZwokRw9LsCA8TKvg,
     ChIJE_M9pU1awokRDf2aEI27qWU,
@@ -110,10 +129,14 @@ l:
     ChIJhV1tboZZwokRCNghkde1e2w
   ]
 m:
+  category: drinks
+  attribute: Beer & Wine only
   ids: [
     ChIJO_DTSCpawokR8ueqrPAl8QI
   ]
 nn:
+  category: coffee
+  attribute: Coffee Shops with seating
   ids: [
     ChIJ2_qXxFBawokRGJ8V9SLdS88,
     ChIJdQpAR71ZwokRkeF531Jk8_Q,
@@ -178,6 +201,8 @@ nn:
     ChIJuc3pNHhZwokRElF6XZROZes,
   ]
 o:
+  category: drinks
+  attribute: Beer bar
   ids: [
     ChIJo1UOPqdbwokRgzXX1J0yTxI,
     ChIJqcBRcLhbwokRW73jQc21c1E,
@@ -198,6 +223,8 @@ o:
     ChIJhV1tboZZwokRCNghkde1e2w,
   ]
 p: 
+  category: drinks
+  attribute: Dive bar
   ids: [
     ChIJWbbWh7xZwokRZNl-bzhPR5E,
     ChIJQwDts4NZwokR1G-QaglL6H0,
@@ -206,6 +233,8 @@ p:
     ChIJ4T3bPptZwokRxMTOwDwXsOw
   ]
 q:
+  category: drinks
+  attribute: Bar with food
   ids: [
     ChIJKUdr071bwokRfoxllC4K8-I,
     ChIJOeTwQ7BbwokRZrDwTtEXYHA,
@@ -248,10 +277,12 @@ q:
     ChIJhV1tboZZwokRCNghkde1e2w,
   ]
 r:
+  attribute: When you want it loud
   ids: [
     ChIJN1zwQJxZwokRNFh2jY9GrVM
   ]
 s:
+  attribute: Bar with the crowd
   ids: [
     ChIJcTnRKLlZwokRT8ZXt9W9cgw,
     ChIJ_ar-yZVbwokRtr_5W6WIZ98,
@@ -264,6 +295,8 @@ s:
     ChIJC8CwMYZZwokR37dlMWCJJt8
   ]
 t:
+  category: food
+  attribute: Lunch with seating
   ids: [
     ChIJ986BIQhZwokRWx8t-bv53Xk,
 ChIJ_-JwoItZwokRoptvAsv5Waw,
@@ -283,10 +316,13 @@ ChIJuc3pNHhZwokRElF6XZROZes,
 ChIJU7yuOVVYwokRFBr9hRPoE2w,
   ]
 u:
+  attribute: Busy Friday Saturday
   ids: [
     ChIJq10o4HlZwokRG2PR7NUrOIo
   ]
 v: 
+  category: coffee
+  attribute: Coffee Shop with food
   ids: [
     ChIJIXmQFYxZwokRhxGPUQv0TRk,
 ChIJSyYvYZRZwokR6tWSvOA2xXw,
@@ -304,6 +340,8 @@ ChIJA9c33pxZwokRzubVjQK9pFM,
 ChIJXeEtRpRZwokRiB3XgC8ccO0,
   ]
 w: 
+  category: drinks
+  attribute: Cocktails
   ids: [
     ChIJy_M6GlBawokRMQEnqU8EHOg,
 ChIJva3gYZtbwokRhLP1H9CcRyU,
@@ -365,6 +403,26 @@ ChIJ27CKRHdZwokRAMnhRQri-bU,
 ChIJq10o4HlZwokRG2PR7NUrOIo,
   ]
 x: 
+  category: coffee
+  attribute: breakfast spot
+  ids: [
+    ChIJ256pFiBawokR-JFcFPAz7Ig,
+ChIJf7ofYYhZwokR-KS8X7CpPV8,
+ChIJP8URcY5ZwokRhFpdfNcK-FI,
+ChIJ_____49MwokRvQ8K9_f-8q8,
+ChIJSyYvYZRZwokR6tWSvOA2xXw,
+ChIJuac4MpdZwokRPSTvSd3DmME,
+ChIJXeEtRpRZwokRiB3XgC8ccO0,
+ChIJ0zAa911ZwokRQlmIU8v4Kzs,
+ChIJQ0MAdylZwokRTl8FGknAU3s,
+ChIJn7pORZJZwokRSjiJ7fyALss,
+ChIJ1fPJMu1ZwokR9bAptiISZfs,
+ChIJuc3pNHhZwokRElF6XZROZes,
+ChIJU7yuOVVYwokRFBr9hRPoE2w,
+  ]
+xx: 
+  category: food
+  attribute: breakfast spot
   ids: [
     ChIJ256pFiBawokR-JFcFPAz7Ig,
 ChIJf7ofYYhZwokR-KS8X7CpPV8,
@@ -381,6 +439,8 @@ ChIJuc3pNHhZwokRElF6XZROZes,
 ChIJU7yuOVVYwokRFBr9hRPoE2w,
   ]
 yy:
+  category: coffee
+  attribute: Coffee shop near park
   ids: [
     ChIJka6YlSlawokRMhN3aYCZWG0,
 ChIJK1yXQO9YwokRPj9clv8k-gQ,
