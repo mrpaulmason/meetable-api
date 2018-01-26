@@ -9,8 +9,8 @@ class SmsController < ApplicationController
 		response_service = ResponseService.new(user: user, wit: wit)
 		responses = []
 		case intent 
-		when 'new'
-			responses = response_service.new_meeting
+		#when 'new'
+			#responses = response_service.new_meeting
 		when 'relay'
 			message = params["Body"]
 			responses = response_service.relay(
