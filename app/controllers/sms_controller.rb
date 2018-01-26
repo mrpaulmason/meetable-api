@@ -9,8 +9,8 @@ class SmsController < ApplicationController
 		response_service = ResponseService.new(user: user, wit: wit)
 		responses = []
 		case intent 
-		#when 'new'
-			#responses = response_service.new_meeting
+		when 'new'
+			responses = response_service.new_meeting
 		when 'relay'
 			message = params["Body"]
 			responses = response_service.relay(
@@ -18,11 +18,11 @@ class SmsController < ApplicationController
 				message: message.split(" ")[3...message.split(" ").length].join(" ")
 			)
 		else
-			#responses ["Hello there, thanks for texting me. Your number is #{from_number}."]
+			responses ["Hello there, thanks for texting me. Your number is #{from_number}."]
 			message = params["Body"]
 			responses = response_service.relay(
 				to: message.split(" ").second, 
-				message: message.split(" ")[3...message.split(" ").length].join(" ")
+				message: message.split(" ")[2...message.split(" ").length].join(" ")
 			)
 		end
 		client = Twilio::REST::Client.new ENV['TWILIO_SID'], ENV['TWILIO_TOKEN']
@@ -49,6 +49,11 @@ class SmsController < ApplicationController
 		unless user = User.find_or_create_by(phone_number: params["phone_number"])
 			render :json => no_user_msg
 			return
+		end
+
+		unless params["phone_number"] != User.find(Meeting.user_id).phone_number
+			render :json => {:status => 400, :message => 'Sorry, please use a different phone number. Did you mean to send this link to someone else?'}
+			return 
 		end
 
 		user.first_name = meeting.nickname 

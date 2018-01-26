@@ -13,6 +13,9 @@ invalid_referral_code:
 invalid_phone_number:
   status: 400
   message: Sorry, please provide a valid phone number.
+duplicate_phone_number:
+  status: 400
+  message: "Sorry, please use a different phone number. Did you mean to send this link to someone else?"
 invalid_email:
   status: 400
   message: Sorry, please provide a valid email.
