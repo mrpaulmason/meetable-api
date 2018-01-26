@@ -29,10 +29,13 @@ class ResponseService
 		connections.each do |c|
 			if c.first_name == to
 				client = Twilio::REST::Client.new ENV['TWILIO_SID'], ENV['TWILIO_TOKEN']
-				client.messages.create(from: ENV['TWILIO_NUMBER'], to: c.phone_number, body: "Hey #{c.first_name}")
+				client.messages.create(from: ENV['TWILIO_NUMBER'], to: c.phone_number, body: "Hey #{c.first_name}, #{u.first_name} says:")
+				client.messages.create(from: ENV['TWILIO_NUMBER'], to: c.phone_number, body: message)
+
+				return ["You're message was sent to #{c.first_name}"]
 			end
 		end
 			
-		
+		return ["I couldn't find anyone named #{to} for you. Let's try again."]
 	end
 end

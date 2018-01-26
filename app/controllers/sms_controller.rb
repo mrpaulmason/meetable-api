@@ -12,9 +12,18 @@ class SmsController < ApplicationController
 		when 'new'
 			responses = response_service.new_meeting
 		when 'relay'
-			responses = response_service.relay(to: params["Body"].split(" ").second)
+			message = params["Body"]
+			responses = response_service.relay(
+				to: message.split(" ").second, 
+				message: message.split(" ")[3...message.split(" ").length].join(" ")
+			)
 		else
-			responses ["Hello there, thanks for texting me. Your number is #{from_number}."]
+			#responses ["Hello there, thanks for texting me. Your number is #{from_number}."]
+			message = params["Body"]
+			responses = response_service.relay(
+				to: message.split(" ").second, 
+				message: message.split(" ")[3...message.split(" ").length].join(" ")
+			)
 		end
 		client = Twilio::REST::Client.new ENV['TWILIO_SID'], ENV['TWILIO_TOKEN']
 		responses.each do |response|
