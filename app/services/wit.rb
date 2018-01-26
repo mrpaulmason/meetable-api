@@ -17,6 +17,16 @@ class Wit
 			response.parsed_response.deep_symbolize_keys!
 		end
 
+		def add_relay
+			body = []
+			keywords = File.readlines("#{Rails.root}/app/models/nlp/relay.txt")
+			keywords.each do |k|
+				e = {:text => k.strip, :entities => [{:entity => 'intent', :value => 'relay'}]}
+				body << e
+			end
+			post("/samples?v=#{version}", :body => body.to_json, :headers => headers)
+		end
+
 		def add_new
 			body = []
 			keywords = File.readlines("#{Rails.root}/app/models/nlp/new.txt")
