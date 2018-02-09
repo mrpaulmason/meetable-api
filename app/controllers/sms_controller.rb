@@ -18,11 +18,6 @@ class SmsController < ApplicationController
 		end
 		
 		responses.each do |response|
-			sms = client.messages.create(
-				from: params["To"],
-				to: user.phone_number,
-				body: "🤖: #{response}"
-			)
 			send_message(to: user.phone_number, from: params["To"], message: "🤖: #{response}")
 		end
 	end
