@@ -2,6 +2,7 @@ class ResponseService
 	def initialize(user:, wit:, relay_number:)
 		@user = user
 		@wit = wit
+		@relay_number = relay_number
 	end
 
 	def new_meeting
