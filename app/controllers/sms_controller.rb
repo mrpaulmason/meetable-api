@@ -8,30 +8,22 @@ class SmsController < ApplicationController
 		intent = wit[:entities].has_key?(:intent) ? wit[:entities][:intent].first[:value] : nil
 		response_service = ResponseService.new(user: user, wit: wit, relay_number: params["To"])
 		responses = []
-		case intent 
-		when 'new'
-			responses = response_service.new_meeting
-		when 'relay'
-			message = params["Body"]
-			responses = response_service.relay(
-				to: message.split(" ").second, 
-				message: message.split(" ")[3...message.split(" ").length].join(" ")
-			)
+		if message.start_with?("\"","'","`")
+			responses = response_service.relay
 		else
-			responses ["Hello there, thanks for texting me. Your number is."]
-			message = params["Body"]
-			responses = response_service.relay(
-				to: message.split(" ").second, 
-				message: message.split(" ")[2...message.split(" ").length].join(" ")
-			)
+			case intent 
+			when 'new'
+				responses = response_service.new_meeting
+			end
 		end
-		client = Twilio::REST::Client.new ENV['TWILIO_SID'], ENV['TWILIO_TOKEN']
+		
 		responses.each do |response|
 			sms = client.messages.create(
-				from: ENV['TWILIO_NUMBER'],
+				from: params["To"],
 				to: user.phone_number,
-				body: response
+				body: "🤖: #{response}"
 			)
+			send_message(to: user.phone_number, from: params["To"], message: "🤖: #{response}")
 		end
 	end
 
@@ -61,12 +53,26 @@ class SmsController < ApplicationController
 		
 		meeting.invitee_id = user.id
 		if meeting.save
-			client = Twilio::REST::Client.new ENV['TWILIO_SID'], ENV['TWILIO_TOKEN']
-			client.messages.create(from: ENV['TWILIO_NUMBER'], to: user.phone_number, body: "Welcome to Meetable!")
-			client.messages.create(from: ENV['TWILIO_NUMBER'], to: user.phone_number, media_url: "https://meetable-api.herokuapp.com/vcard")
+			send_message(to: meeting.user.phone_number, from: meeting.relay_number, message: "🤖: #{meeting.nickname} submitted number")
+			send_message(to: user.phone_number, from: meeting.relay_number, message: "🤖: Welcome to Meetable!")
+			send_message(to: user.phone_number, from: meeting.relay_number, media_url: "https://meetable-api.herokuapp.com/vcard")
+			send_message(to: meeting.user.phone_number, from: meeting.relay_number, message: "🤖: #{meeting.nickname} received welcome msgs")
+			send_message(to: user.phone_number, from: meeting.relay_number, message: "[Paul]: Hey #{meeting.nickname.split(" ").first.capitalize}", delay: 30.0)
+			send_message(to: meeting.user.phone_number, from: meeting.relay_number, message: "🤖: Hi msg sent", delay: 31.0)
 			render :json => ok_msg
 		else
 			render :json => error_msg
+		end
+	end
+
+
+	def send_message(to:, from:, message: nil, media_url: nil, delay: 0.0)
+		sleep delay
+		client = Twilio::REST::Client.new ENV['TWILIO_SID'], ENV['TWILIO_TOKEN']
+		if message
+			client.messages.create(from: from, to: to, body: message)
+		elsif media_url
+			client.messages.create(from: from, to: to, media_url: media_url)
 		end
 	end
 end
