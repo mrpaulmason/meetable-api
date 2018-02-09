@@ -6,7 +6,7 @@ class SmsController < ApplicationController
 		message = params["Body"]
 		wit = Wit.message(message: message)
 		intent = wit[:entities].has_key?(:intent) ? wit[:entities][:intent].first[:value] : nil
-		response_service = ResponseService.new(user: user, wit: wit, relay_number: params["From"])
+		response_service = ResponseService.new(user: user, wit: wit, relay_number: params["To"])
 		responses = []
 		case intent 
 		when 'new'

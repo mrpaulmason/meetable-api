@@ -1,5 +1,5 @@
 class ResponseService
-	def initialize(user:, wit:, relay_number)
+	def initialize(user:, wit:, relay_number:)
 		@user = user
 		@wit = wit
 	end
