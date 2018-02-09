@@ -6,7 +6,7 @@ class SmsController < ApplicationController
 		message = params["Body"]
 		wit = Wit.message(message: message)
 		intent = wit[:entities].has_key?(:intent) ? wit[:entities][:intent].first[:value] : nil
-		response_service = ResponseService.new(user: user, wit: wit)
+		response_service = ResponseService.new(user: user, wit: wit, relay_number: params["From"])
 		responses = []
 		case intent 
 		when 'new'
@@ -18,7 +18,7 @@ class SmsController < ApplicationController
 				message: message.split(" ")[3...message.split(" ").length].join(" ")
 			)
 		else
-			responses ["Hello there, thanks for texting me. Your number is #{from_number}."]
+			responses ["Hello there, thanks for texting me. Your number is."]
 			message = params["Body"]
 			responses = response_service.relay(
 				to: message.split(" ").second, 
