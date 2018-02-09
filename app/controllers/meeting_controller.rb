@@ -30,7 +30,7 @@ class MeetingController < ApplicationController
     end
 
     def send_message(to:, from:, message: nil, media_url: nil, delay: 0.0)
-        sleep delay
+        #sleep delay
         client = Twilio::REST::Client.new ENV['TWILIO_SID'], ENV['TWILIO_TOKEN']
         if message
             client.messages.create(from: from, to: to, body: message)
