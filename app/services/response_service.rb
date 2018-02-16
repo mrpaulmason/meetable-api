@@ -26,14 +26,11 @@ class ResponseService
 			message = "[#{meeting.nickname}]: #{@wit[:_text]}"
 		end
 
-		client = Twilio::REST::Client.new ENV['TWILIO_SID'], ENV['TWILIO_TOKEN']
-				client.messages.create(from: ENV['TWILIO_NUMBER'], to: to_number, body: message)
+		Message.new(from: ENV['TWILIO_NUMBER'], to: to_number, message: message)
 
 		connections = User.find(@user.meetings.pluck(:invitee_id))
 		connections.each do |c|
 			if c.first_name == to
-				
-
 				return ["You're message was sent to #{c.first_name}"]
 			end
 		end
