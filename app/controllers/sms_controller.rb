@@ -18,17 +18,8 @@ class SmsController < ApplicationController
 		end
 		
 		responses.each do |response|
-			send_message(to: user.phone_number, from: params["To"], message: "🤖: #{response}")
-		end
-	end
-
-	def send_message(to:, from:, message: nil, media_url: nil, delay: 0.0)
-		sleep delay
-		client = Twilio::REST::Client.new ENV['TWILIO_SID'], ENV['TWILIO_TOKEN']
-		if message
-			client.messages.create(from: from, to: to, body: message)
-		elsif media_url
-			client.messages.create(from: from, to: to, media_url: media_url)
+			message = Message.new(to: user.phone_number, from: params["To"], message: "🤖: #{response}")
+			message.save
 		end
 	end
 end
