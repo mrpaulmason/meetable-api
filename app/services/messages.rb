@@ -1,6 +1,8 @@
 class Messages 
 	def self.send
 		messages_to_send = Message.where("sent = ? AND send_at >= ?", false, Time.now)
+		puts "queue started"
+		puts messages_to_send
 		messages_to_send.each do |m|
 			m.sent = true
 			m.save
