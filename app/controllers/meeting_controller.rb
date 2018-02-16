@@ -23,7 +23,7 @@ class MeetingController < ApplicationController
                 message = Message.new(to: user.phone_number, from: meeting.relay_number, message: "[Paul]: Hey #{meeting.nickname.split(" ").first.capitalize}", send_at: Time.now + 30.seconds)
                 message.save
 
-                send_message(to: meeting.user.phone_number, from: meeting.relay_number, message: "🤖: Hi msg sent", send_at: Time.now + 31.seconds)
+                message = Message.new(to: meeting.user.phone_number, from: meeting.relay_number, message: "🤖: Hi msg sent", send_at: Time.now + 31.seconds)
                 message.save
             rescue => e
                 render :json => APIResponse.response(type: "twilio_error") and return
