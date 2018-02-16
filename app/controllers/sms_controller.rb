@@ -2,6 +2,7 @@ require 'twilio-ruby'
 
 class SmsController < ApplicationController
 	def reply
+		puts "hello world!!!!"
 		user = User.find_or_create_by(phone_number: params["From"])
 		message = params["Body"]
 		wit = Wit.message(message: message)
