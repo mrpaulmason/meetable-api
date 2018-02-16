@@ -8,65 +8,27 @@ class SmsController < ApplicationController
 		intent = wit[:entities].has_key?(:intent) ? wit[:entities][:intent].first[:value] : nil
 		response_service = ResponseService.new(user: user, wit: wit, relay_number: params["To"])
 		responses = []
-		case intent 
-		when 'new'
-			responses = response_service.new_meeting
-		when 'relay'
-			message = params["Body"]
-			responses = response_service.relay(
-				to: message.split(" ").second, 
-				message: message.split(" ")[3...message.split(" ").length].join(" ")
-			)
+		if message.start_with?("\"","'","`")
+			responses = response_service.relay
 		else
-			responses ["Hello there, thanks for texting me. Your number is."]
-			message = params["Body"]
-			responses = response_service.relay(
-				to: message.split(" ").second, 
-				message: message.split(" ")[2...message.split(" ").length].join(" ")
-			)
+			case intent 
+			when 'new'
+				responses = response_service.new_meeting
+			end
 		end
-		client = Twilio::REST::Client.new ENV['TWILIO_SID'], ENV['TWILIO_TOKEN']
+		
 		responses.each do |response|
-			sms = client.messages.create(
-				from: ENV['TWILIO_NUMBER'],
-				to: user.phone_number,
-				body: response
-			)
+			send_message(to: user.phone_number, from: params["To"], message: "🤖: #{response}")
 		end
 	end
 
-	def accept 
-		no_ref_msg = {:status => 400, :message => 'Sorry, this code is invalid.'}
-		no_user_msg = {:status => 400, :message => 'Sorry, please provide a valid phone number.'}
-		error_msg = {:status => 400, :message => 'There was an error, please try again'}
-		ok_msg = {:status => 200, :message => "OK"}
-
-		unless meeting = Meeting.find_by_share_code(params['ref']) 
-			render :json => no_ref_msg 
-			return 
-		end
-		
-		unless user = User.find_or_create_by(phone_number: params["phone_number"])
-			render :json => no_user_msg
-			return
-		end
-
-		unless params["phone_number"] != User.find(Meeting.user_id).phone_number
-			render :json => {:status => 400, :message => 'Sorry, please use a different phone number. Did you mean to send this link to someone else?'}
-			return 
-		end
-
-		user.first_name = meeting.nickname 
-		user.save
-		
-		meeting.invitee_id = user.id
-		if meeting.save
-			client = Twilio::REST::Client.new ENV['TWILIO_SID'], ENV['TWILIO_TOKEN']
-			client.messages.create(from: ENV['TWILIO_NUMBER'], to: user.phone_number, body: "Welcome to Meetable!")
-			client.messages.create(from: ENV['TWILIO_NUMBER'], to: user.phone_number, media_url: "https://meetable-api.herokuapp.com/vcard")
-			render :json => ok_msg
-		else
-			render :json => error_msg
+	def send_message(to:, from:, message: nil, media_url: nil, delay: 0.0)
+		sleep delay
+		client = Twilio::REST::Client.new ENV['TWILIO_SID'], ENV['TWILIO_TOKEN']
+		if message
+			client.messages.create(from: from, to: to, body: message)
+		elsif media_url
+			client.messages.create(from: from, to: to, media_url: media_url)
 		end
 	end
 end

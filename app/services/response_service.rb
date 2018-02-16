@@ -14,13 +14,25 @@ class ResponseService
 		["Send this link to #{nickname}:","http://meetable.ai/invite?m=#{m.share_code}"]
 	end
 
-	def relay(to:, message:)
+	def relay
+		inviter = User.find(@user.meetings.where(:relay_number => @relay_number).last)
+		invitee = User.find(Meeting.where(:relay_number => @relay_number, :invitee_id => @user.id))
+		if inviter
+			to_number = invitee.phone_number
+			message = "[Paul]: #{@wit[:_text]}"
+		elsif 
+			to_number = inviter.phone_number
+			meeting = @user.meetings.where(:relay_number => @relay_number).last
+			message = "[#{meeting.nickname}]: #{@wit[:_text]}"
+		end
+
+		client = Twilio::REST::Client.new ENV['TWILIO_SID'], ENV['TWILIO_TOKEN']
+				client.messages.create(from: ENV['TWILIO_NUMBER'], to: to_number, body: message)
+
 		connections = User.find(@user.meetings.pluck(:invitee_id))
 		connections.each do |c|
 			if c.first_name == to
-				client = Twilio::REST::Client.new ENV['TWILIO_SID'], ENV['TWILIO_TOKEN']
-				client.messages.create(from: ENV['TWILIO_NUMBER'], to: c.phone_number, body: "Hey #{c.first_name}, #{@user.first_name} says:")
-				client.messages.create(from: ENV['TWILIO_NUMBER'], to: c.phone_number, body: message)
+				
 
 				return ["You're message was sent to #{c.first_name}"]
 			end
