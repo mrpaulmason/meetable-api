@@ -18,8 +18,8 @@ class ResponseService
 	end
 
 	def relay
-		inviter_meeting = Meeting.where(:relay_number => @relay_number, :user_id => @user.id)
-		invitee_meeting = Meeting.where(:relay_number => @relay_number, :invitee_id => @user.id)
+		inviter_meeting = Meeting.where(:relay_number => @relay_number, :user_id => @user.id).last
+		invitee_meeting = Meeting.where(:relay_number => @relay_number, :invitee_id => @user.id).last
 		
 		if inviter_meeting
 			invitee = User.find(inviter_meeting.invitee_id)
