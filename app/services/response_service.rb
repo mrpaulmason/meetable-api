@@ -28,8 +28,7 @@ class ResponseService
 		elsif invitee_meeting
 			inviter = User.find(invitee_meeting.user_id)
 			to_number = inviter.phone_number
-			meeting = @user.meetings.where(:relay_number => @relay_number).last
-			message = "[#{meeting.nickname}] #{@wit[:_text]}"
+			message = "[#{invitee_meeting.nickname}] #{@wit[:_text]}"
 		end
 
 		r = Message.new(from: ENV['TWILIO_NUMBER'], to: to_number, message: message)
