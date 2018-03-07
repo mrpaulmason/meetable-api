@@ -8,22 +8,22 @@ class MeetingController < ApplicationController
         
         if meeting.save
             begin
-                message = Message.new(to: meeting.user.phone_number, from: meeting.relay_number, message: "🤖: #{meeting.nickname} submitted number")
+                message = Message.new(to: meeting.user.phone_number, from: meeting.relay_number, message: "#{meeting.nickname} submitted number")
                 message.save
 
-                message = Message.new(to: user.phone_number, from: meeting.relay_number, message: "🤖: Welcome to Meetable!")
+                message = Message.new(to: user.phone_number, from: meeting.relay_number, message: "Welcome to Meetable!")
                 message.save
 
                 message = Message.new(to: user.phone_number, from: meeting.relay_number, media_url: "https://meetable-api.herokuapp.com/vcard")
                 message.save
 
-                message = Message.new(to: meeting.user.phone_number, from: meeting.relay_number, message: "🤖: #{meeting.nickname} received welcome msgs")
+                message = Message.new(to: meeting.user.phone_number, from: meeting.relay_number, message: "#{meeting.nickname} received welcome msgs")
                 message.save
 
-                message = Message.new(to: user.phone_number, from: meeting.relay_number, message: "[Paul]: Hey #{meeting.nickname.split(" ").first.capitalize}", send_at: Time.now + 30.seconds)
+                message = Message.new(to: user.phone_number, from: meeting.relay_number, message: "[Paul] Hey #{meeting.nickname.split(" ").first.capitalize}", send_at: Time.now + 30.seconds)
                 message.save
 
-                message = Message.new(to: meeting.user.phone_number, from: meeting.relay_number, message: "🤖: Hi msg sent", send_at: Time.now + 31.seconds)
+                message = Message.new(to: meeting.user.phone_number, from: meeting.relay_number, message: "Hi msg sent", send_at: Time.now + 31.seconds)
                 message.save
             rescue => e
                 render :json => APIResponse.response(type: "twilio_error") and return

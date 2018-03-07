@@ -19,22 +19,13 @@ class ResponseService
 		invitee = User.find(Meeting.where(:relay_number => @relay_number, :invitee_id => @user.id))
 		if inviter
 			to_number = invitee.phone_number
-			message = "[Paul]: #{@wit[:_text]}"
+			message = "[Paul] #{@wit[:_text]}"
 		elsif 
 			to_number = inviter.phone_number
 			meeting = @user.meetings.where(:relay_number => @relay_number).last
-			message = "[#{meeting.nickname}]: #{@wit[:_text]}"
+			message = "[#{meeting.nickname}] #{@wit[:_text]}"
 		end
 
 		Message.new(from: ENV['TWILIO_NUMBER'], to: to_number, message: message)
-
-		connections = User.find(@user.meetings.pluck(:invitee_id))
-		connections.each do |c|
-			if c.first_name == to
-				return ["You're message was sent to #{c.first_name}"]
-			end
-		end
-			
-		return ["I couldn't find anyone named #{to} for you. Let's try again."]
 	end
 end
