@@ -11,30 +11,27 @@ class ResponseService
 		date_time = @wit[:entities].has_key?(:datetime) ? @wit[:entities][:datetime].first[:value] : nil
 		m = Meeting.new(user_id: @user.id, date_time: date_time, location_type: location_type, nickname: nickname, relay_number: @relay_number)
 		m.save
-		["Send this link to #{nickname}:","http://meetable.ai/invite?m=#{m.share_code}"]
+		r = Message.new(from: ENV['TWILIO_NUMBER'], to: @user.phone_number, message: "Send this link to #{nickname}:")
+		r.save
+		t = Message.new(from: ENV['TWILIO_NUMBER'], to: @user.phone_number, message: "http://meetable.ai/invite?m=#{m.share_code}")
+		t.save
 	end
 
 	def relay
-		inviter = User.find(@user.meetings.where(:relay_number => @relay_number).last)
-		invitee = User.find(Meeting.where(:relay_number => @relay_number, :invitee_id => @user.id))
-		if inviter
+		inviter_meeting = Meeting.where(:relay_number => @relay_number, :user_id => @user.id).last
+		invitee_meeting = Meeting.where(:relay_number => @relay_number, :invitee_id => @user.id).last
+		
+		if inviter_meeting
+			invitee = User.find(inviter_meeting.invitee_id)
 			to_number = invitee.phone_number
-			message = "[Paul]: #{@wit[:_text]}"
-		elsif 
+			message = "[Paul] #{@wit[:_text]}"
+		elsif invitee_meeting
+			inviter = User.find(invitee_meeting.user_id)
 			to_number = inviter.phone_number
-			meeting = @user.meetings.where(:relay_number => @relay_number).last
-			message = "[#{meeting.nickname}]: #{@wit[:_text]}"
+			message = "[#{invitee_meeting.nickname}] #{@wit[:_text]}"
 		end
 
-		Message.new(from: ENV['TWILIO_NUMBER'], to: to_number, message: message)
-
-		connections = User.find(@user.meetings.pluck(:invitee_id))
-		connections.each do |c|
-			if c.first_name == to
-				return ["You're message was sent to #{c.first_name}"]
-			end
-		end
-			
-		return ["I couldn't find anyone named #{to} for you. Let's try again."]
+		r = Message.new(from: ENV['TWILIO_NUMBER'], to: to_number, message: message)
+		r.save
 	end
 end
