@@ -18,12 +18,15 @@ class ResponseService
 	end
 
 	def relay
-		inviter = User.find(@user.meetings.where(:relay_number => @relay_number).last)
-		invitee = User.find(Meeting.where(:relay_number => @relay_number, :invitee_id => @user.id))
-		if inviter
+		inviter_meeting = Meeting.where(:relay_number => @relay_number, :user_id => @user.id)
+		invitee_meeting = Meeting.where(:relay_number => @relay_number, :invitee_id => @user.id)
+		
+		if inviter_meeting
+			invitee = User.find(inviter_meeting.invitee_id)
 			to_number = invitee.phone_number
 			message = "[Paul] #{@wit[:_text]}"
-		elsif 
+		elsif invitee_meeting
+			inviter = User.find(invitee_meeting.user_id)
 			to_number = inviter.phone_number
 			meeting = @user.meetings.where(:relay_number => @relay_number).last
 			message = "[#{meeting.nickname}] #{@wit[:_text]}"
