@@ -6,7 +6,7 @@ class ResponseService
 	end
 
 	def new_meeting
-		nickname = @wit[:_text].split(".").first.capitalize
+		nickname = @wit[:_text].split(".").first[1..-1].strip.capitalize
 		location_type = @wit[:_text].split(" ").last
 		date_time = @wit[:entities].has_key?(:datetime) ? @wit[:entities][:datetime].first[:value] : nil
 		m = Meeting.new(user_id: @user.id, date_time: date_time, location_type: location_type, nickname: nickname, relay_number: @relay_number)
