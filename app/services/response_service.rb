@@ -28,7 +28,11 @@ class ResponseService
 		elsif invitee_meeting
 			inviter = User.find(invitee_meeting.user_id)
 			to_number = inviter.phone_number
-			message = "[#{invitee_meeting.nickname}] #{@wit[:_text]}"
+			if @wit[:_text] == @wit[:_text].upcase
+				message = "🐚 #{@wit[:_text]}"
+			else
+				message = "[#{invitee_meeting.nickname}] #{@wit[:_text]}"
+			end
 		end
 
 		r = Message.new(from: ENV['TWILIO_NUMBER'], to: to_number, message: message)
