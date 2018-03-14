@@ -8,8 +8,7 @@ class SmsController < ApplicationController
 		intent = wit[:entities].has_key?(:intent) ? wit[:entities][:intent].first[:value] : nil
 		response_service = ResponseService.new(user: user, wit: wit, relay_number: params["To"])
 		responses = []
-		case intent 
-		when 'new'
+		if message.start_with?("/")
 			response_service.new_meeting
 		else
 			response_service.relay
