@@ -25,9 +25,9 @@ class MeetingController < ApplicationController
         
         meeting = Meeting.find_by_share_code(params[:id])
 
-        render :json => APIResponse.response(type: "invalid_referral_code") and return unless meeting.confirmation_code == params[:confirmation_code]
+        render :json => APIResponse.response(type: "invalid_referral_code") and return unless meeting.confirmation_code == params[:confirmation_code].to_i
         
-        if meeting.confirmation_code == params[:confirmation_code]
+        if meeting.confirmation_code == params[:confirmation_code].to_i
             begin
                 message = Message.new(to: meeting.user.phone_number, from: meeting.relay_number, message: "#{meeting.nickname} submitted number")
                 message.save
