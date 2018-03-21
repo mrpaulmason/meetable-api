@@ -9,7 +9,10 @@ twilio_error:
   message:  There was an error with Twilio.
 invalid_referral_code:
   status: 404
-  message: Sorry, this code is invalid.
+  message: Sorry, this referral code is invalid.
+invalid_confirmation_code:
+  status: 404
+  message: Sorry, this confirmation code is invalid.
 invalid_phone_number:
   status: 400
   message: Sorry, please provide a valid phone number.
