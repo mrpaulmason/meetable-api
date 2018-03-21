@@ -11,6 +11,7 @@ class MeetingController < ApplicationController
                 message = Message.new(to: user.phone_number, from: meeting.relay_number, message: "Your Meetable verification code is: #{meeting.confirmation_code}")
                 message.save
             rescue => e
+                puts e.message
                 render :json => APIResponse.response(type: "twilio_error") and return
             end
 
@@ -45,6 +46,7 @@ class MeetingController < ApplicationController
                 message = Message.new(to: meeting.user.phone_number, from: meeting.relay_number, message: "Hi msg sent", send_at: Time.now + 31.seconds)
                 message.save
             rescue => e
+                puts e.message
                 render :json => APIResponse.response(type: "twilio_error") and return
             end
 
