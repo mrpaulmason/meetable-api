@@ -11,6 +11,7 @@ class MeetingController < ApplicationController
                 message = Message.new(to: user.phone_number, from: meeting.relay_number, message: "Your Meetable verification code is: #{meeting.confirmation_code}")
                 message.save
             rescue => e
+                puts e.message
                 render :json => APIResponse.response(type: "twilio_error") and return
             end
 
@@ -22,10 +23,8 @@ class MeetingController < ApplicationController
 
     def confirm
         render :json => APIResponse.response(type: "invalid_referral_code") and return unless meeting = Meeting.find_by_share_code(params[:id])
-        
-        meeting = Meeting.find_by_share_code(params[:id])
-
-        render :json => APIResponse.response(type: "invalid_referral_code") and return unless meeting.confirmation_code == params[:confirmation_code].to_i
+        render :json => APIResponse.response(type: "invalid_confirmation_code") and return unless meeting.confirmation_code == params[:confirmation_code].to_i
+        render :json => APIResponse.response(type: "invalid_phone_number") and return unless user = User.find(meeting.invitee_id)
         
         if meeting.confirmation_code == params[:confirmation_code].to_i
             begin
@@ -47,6 +46,7 @@ class MeetingController < ApplicationController
                 message = Message.new(to: meeting.user.phone_number, from: meeting.relay_number, message: "Hi msg sent", send_at: Time.now + 31.seconds)
                 message.save
             rescue => e
+                puts e.message
                 render :json => APIResponse.response(type: "twilio_error") and return
             end
 
