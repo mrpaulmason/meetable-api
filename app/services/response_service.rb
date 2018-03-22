@@ -24,7 +24,11 @@ class ResponseService
 		if inviter_meeting
 			invitee = User.find(inviter_meeting.invitee_id)
 			to_number = invitee.phone_number
-			message = "[Paul] #{@wit[:_text]}"
+			if @wit[:_text].start_with?("/")
+				message = "#{@wit[:_text]}"
+			else
+				message = "[Paul] #{@wit[:_text]}"
+			end
 		elsif invitee_meeting
 			inviter = User.find(invitee_meeting.user_id)
 			to_number = inviter.phone_number
