@@ -6,7 +6,8 @@ class ResponseService
 	end
 
 	def new_meeting
-		nickname = @wit[:_text].split(".").first[1..-1].strip.capitalize
+		#nickname = @wit[:_text].split(".").first[1..-1].strip.capitalize
+		nickname = @wit[:_text].split(".").first[0..-1].strip.capitalize
 		location_type = @wit[:_text].split(" ").last
 		date_time = @wit[:entities].has_key?(:datetime) ? @wit[:entities][:datetime].first[:value] : nil
 		m = Meeting.new(user_id: @user.id, date_time: date_time, location_type: location_type, nickname: nickname, relay_number: @relay_number)
@@ -20,12 +21,12 @@ class ResponseService
 	def relay
 		inviter_meeting = Meeting.where(:relay_number => @relay_number, :user_id => @user.id).last
 		invitee_meeting = Meeting.where(:relay_number => @relay_number, :invitee_id => @user.id).last
-		
+
 		if inviter_meeting
 			invitee = User.find(inviter_meeting.invitee_id)
 			to_number = invitee.phone_number
 			if @wit[:_text].start_with?("/")
-				message = " #{@wit[:_text]}"
+				message = "#{@wit[:_text]}"
 			else
 				message = "[Paul] #{@wit[:_text]}"
 			end
