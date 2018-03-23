@@ -6,15 +6,14 @@ class ResponseService
 	end
 
 	def new_meeting
-		#nickname = @wit[:_text].split(".").first[1..-1].strip.capitalize
-		nickname = @wit[:_text].split(".").first[0..-1].strip.capitalize
+		nickname = @wit[:_text].split(".").first[1..-1].strip.capitalize
 		location_type = @wit[:_text].split(" ").last
 		date_time = @wit[:entities].has_key?(:datetime) ? @wit[:entities][:datetime].first[:value] : nil
 		m = Meeting.new(user_id: @user.id, date_time: date_time, location_type: location_type, nickname: nickname, relay_number: @relay_number)
 		m.save
 		r = Message.new(from: ENV['TWILIO_NUMBER'], to: @user.phone_number, message: "Send this link to #{nickname}:")
 		r.save
-		t = Message.new(from: ENV['TWILIO_NUMBER'], to: @user.phone_number, message: "http://meetable.ai/invite?m=#{m.share_code}")
+		t = Message.new(from: ENV['TWILIO_NUMBER'], to: @user.phone_number, message: "http://meetable.ai/#{m.share_code}")
 		t.save
 	end
 
@@ -26,7 +25,7 @@ class ResponseService
 			invitee = User.find(inviter_meeting.invitee_id)
 			to_number = invitee.phone_number
 			if @wit[:_text].start_with?("/")
-				message = "#{@wit[:_text]}"
+				message = " #{@wit[:_text]}"
 			else
 				message = "[Paul] #{@wit[:_text]}"
 			end
