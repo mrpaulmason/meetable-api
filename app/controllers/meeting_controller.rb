@@ -25,7 +25,7 @@ class MeetingController < ApplicationController
                 message = Message.new(to: user.phone_number, from: meeting.relay_number, message: "[Paul] Hi #{meeting.nickname.split(" ").first.capitalize}", send_at: Time.now + 30.seconds)
                 message.save
 
-                message = Message.new(to: meeting.user.phone_number, from: meeting.relay_number, message: "Hi msg sent to #{meeting.nickname}", send_at: Time.now + 31.seconds)
+                message = Message.new(to: meeting.user.phone_number, from: meeting.relay_number, message: "Hi msg sent to #{meeting.nickname.split(" ").first.capitalize}", send_at: Time.now + 31.seconds)
                 message.save
             rescue => e
                 puts e.message
