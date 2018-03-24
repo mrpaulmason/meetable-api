@@ -13,7 +13,7 @@ class ResponseService
 		m.save
 		r = Message.new(from: ENV['TWILIO_NUMBER'], to: @user.phone_number, message: "Send this link to #{nickname}:")
 		r.save
-		t = Message.new(from: ENV['TWILIO_NUMBER'], to: @user.phone_number, message: "http://www.meetable.ai/?m=#{m.share_code}")
+		t = Message.new(from: ENV['TWILIO_NUMBER'], to: @user.phone_number, message: "http://www.meetable.ai/?invite=#{m.share_code}")
 		t.save
 	end
 
