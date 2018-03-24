@@ -20,5 +20,5 @@ function base64_decode(base64str, file) {
 // convert image to base64 encoded string
 var base64str = base64_encode('./public/vcard_final.png');
 console.log(base64str);
-// convert base64 string back to image 
+// convert base64 string back to image
 //base64_decode(base64str, 'copy.jpg');
