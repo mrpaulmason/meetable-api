@@ -4,7 +4,7 @@ default: &default
   TWILIO_NUMBER: '+16467599030'
   TWILIO_VERIFY: 'jCFzUvTgZyDb1M4nCQSlspq4L8IlMDXW'
   WIT_TOKEN: 'U2TCQ2PH5BEPVEZEBQASZSNGI6FIN7ML'
-  WEB_PING: 'https://meetableai.herokuapp.com/'
+  WEB_PING: 'https://www.meetable.ai'
   API_PING: 'https://meetable-api.herokuapp.com/ping'
   GOOGLE_API: 'AIzaSyBoJwLLWMHpMdrpmuBdYB77dGGjoZprQ4I'
 
