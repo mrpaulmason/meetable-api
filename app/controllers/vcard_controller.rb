@@ -15,7 +15,7 @@ class VcardController < ApplicationController
 #6467599030
 	def card
 		vcard_template = File.open(File.join(Rails.root, "public/vcard_template.txt"), "rb").read
-		vcard = vcard_template.sub! 'REPLACE_PHONE_NUMBER', '6467599030'
+		vcard = vcard_template.sub! 'REPLACE_PHONE_NUMBER', '9292961060'
 		send_data vcard, :filename => "meetable.vcf"
 		# ##imgencoded = Base64.encode64(File.open(File.join(Rails.root, "public/m2.jpg"), "rb").read)
 		# vcard = VCardigan.create(:version => '3.0')
