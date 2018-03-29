@@ -11,9 +11,9 @@ class ResponseService
 		date_time = @wit[:entities].has_key?(:datetime) ? @wit[:entities][:datetime].first[:value] : nil
 		m = Meeting.new(user_id: @user.id, date_time: date_time, location_type: location_type, nickname: nickname, relay_number: @relay_number)
 		m.save
-		r = Message.new(from: ENV['TWILIO_NUMBER'], to: @user.phone_number, message: "Send this link to #{nickname}:")
+		r = Message.new(from: @relay_number, to: @user.phone_number, message: "Send this link to #{nickname}:")
 		r.save
-		t = Message.new(from: ENV['TWILIO_NUMBER'], to: @user.phone_number, message: "http://www.meetable.ai/?invite=#{m.share_code}")
+		t = Message.new(from: @relay_number, to: @user.phone_number, message: "http://www.meetable.ai/?invite=#{m.share_code}")
 		t.save
 	end
 
