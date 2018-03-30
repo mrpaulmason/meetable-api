@@ -22,7 +22,7 @@ class VcardController < ApplicationController
 		# vcard.name 'Meetable', ''
 		# vcard.fullname 'Meetable.ai'
 		# vcard.tel '6467599030'
-		# vcard[:item1].url 'https://meetable.ai'
+		# vcard[:item1].url 'https://www.meetable.ai'
 		# ##vcard.photo 'https://meetable-api-prime.herokuapp.com/m2.jpg', :type => 'JPEG', :value => 'URI'
 		# ##vcard.photo imgencoded, :ENCODING => 'BASE64;JPEG'
 		# send_data vcard.to_s, :filename => "meetable.vcf"
