@@ -39,7 +39,7 @@ class ResponseService
 			end
 		end
 
-		r = Message.new(from: ENV['TWILIO_NUMBER'], to: to_number, message: message)
+		r = Message.new(from: @relay_number, to: to_number, message: message)
 		r.save
 	end
 end
