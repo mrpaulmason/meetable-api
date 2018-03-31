@@ -6,6 +6,8 @@ class MeetingController < ApplicationController
         meeting = Meeting.find_by_share_code(params[:id])
         meeting.invitee_id = user.id
 
+				meeting.relay_number = Meeting.choose_relay initiator: meeting.user, acceptor: user
+
         if meeting.save
             begin
                 #message = Message.new(to: user.phone_number, from: meeting.relay_number, message: "Your Meetable verification code is: #{meeting.confirmation_code}")
