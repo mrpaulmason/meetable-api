@@ -19,5 +19,8 @@ class Meeting < ApplicationRecord
 								.or(Meeting.where(:invitee_id => [initiator.id, acceptor.id])
 			).count
 		end
+		# if we reach this point, a new number needs to be acquired
+		# return last number for now
+		return Relay.where("active = ?", true).last
 	end
 end
