@@ -15,12 +15,12 @@ class Meeting < ApplicationRecord
 
 	def self.choose_relay initiator:, acceptor:
 		Relay.where("active = ?", true) do |relay|
-			return relay.number unless Meeting.where(:user_id => [initiator.id, acceptor.id])
-								.or(Meeting.where(:invitee_id => [initiator.id, acceptor.id])
+			return relay.number unless Meeting.where(:relay_number => relay.number, :user_id => [initiator.id, acceptor.id])
+								.or(Meeting.where(:relay_number => relay.number, :invitee_id => [initiator.id, acceptor.id])
 			).count
 		end
 		# if we reach this point, a new number needs to be acquired
 		# return last number for now
-		return Relay.where("active = ?", true).last
+		return Relay.where("active = ?", true).last.number
 	end
 end
