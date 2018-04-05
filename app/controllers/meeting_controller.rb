@@ -9,6 +9,7 @@ class MeetingController < ApplicationController
 						meeting = meeting.dup
 						# set nickname to blank?
 						meeting.nickname = ""
+				end
 
         meeting.invitee_id = user.id
 
@@ -33,7 +34,7 @@ class MeetingController < ApplicationController
                 message = Message.new(to: user.phone_number, from: meeting.relay_number, message: "[Paul] Hi #{meeting.nickname.split(" ").first.capitalize}", send_at: Time.now + 30.seconds)
                 message.save
 
-                message = Message.new(to: meeting.user.phone_number, from: meeting.relay_number, message: "Hi msg sent to #{meeting.nickname.split(" ").first.capitalize} (relay #{Relay.where("number = ?", meeting.relay_number).id - 1} of #{Relay.where("active = ?", true).count})", send_at: Time.now + 31.seconds)
+								message = Message.new(to: meeting.user.phone_number, from: meeting.relay_number, message: "Hi msg sent to #{meeting.nickname.split(" ").first.capitalize} (relay #{Relay.where("number = ?", meeting.relay_number).id - 1} of #{Relay.where("active = ?", true).count})", send_at: Time.now + 31.seconds)
                 message.save
             rescue => e
                 puts e.message
