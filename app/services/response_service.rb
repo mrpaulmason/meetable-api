@@ -9,6 +9,12 @@ class ResponseService
 		nickname = @wit[:_text].split(".").first[0..-1].strip.capitalize
 		location_type = @wit[:_text].split(" ").last
 		date_time = @wit[:entities].has_key?(:datetime) ? @wit[:entities][:datetime].first[:value] : nil
+		# if this relay number is new add it to the relays table
+		Relay.find_or_create_by(number: @relay_number) do |relay|
+  		relay.active = true
+			relay.created_at = DateTime.now
+			relay.update_at = DateTime.now
+		end
 		m = Meeting.new(user_id: @user.id, date_time: date_time, location_type: location_type, nickname: nickname, relay_number: @relay_number)
 		m.save
 		r = Message.new(from: @relay_number, to: @user.phone_number, message: "Send this link to #{nickname}:")
