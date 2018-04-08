@@ -5,7 +5,6 @@ class Meeting < ApplicationRecord
 	belongs_to :user
 
 	def generate_share_code
-		# loop until unique share code generated
 		self.share_code = SecureRandom.hex(3)
 		while Meeting.where("share_code = ?", self.share_code).count != 0
 			self.share_code = SecureRandom.hex(3)
