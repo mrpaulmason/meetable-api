@@ -6,6 +6,9 @@ class Meeting < ApplicationRecord
 
 	def generate_share_code
 		self.share_code = SecureRandom.hex(3)
+		while Meeting.where("share_code = ?", self.share_code).count != 0
+			self.share_code = SecureRandom.hex(3)
+		end
 		self.confirmation_code = 6.times.map { rand(1..9) }.join.to_i
 	end
 
