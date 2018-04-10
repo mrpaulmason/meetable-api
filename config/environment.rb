@@ -5,6 +5,3 @@ require_relative 'application'
 Rails.application.initialize!
 
 Rails.logger = Logger.new(STDOUT)
-
-Rails.logger.level = 3
-ActiveRecord::Base.logger = nil
