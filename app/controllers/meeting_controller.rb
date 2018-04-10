@@ -3,13 +3,7 @@ class MeetingController < ApplicationController
         render :json => APIResponse.response(type: "invalid_referral_code") and return unless meeting = Meeting.find_by_share_code(params[:id])
         render :json => APIResponse.response(type: "invalid_phone_number") and return unless user = User.find_or_create_by(phone_number: "+1#{params['phone_number']}")
 
-        meeting = Meeting.find_by_share_code(params[:id])
-				if not meeting.invitee_id.nil?
-						# copy meeting
-						meeting = meeting.dup
-						# set nickname to blank?
-						meeting.nickname = ""
-				end
+        meeting = meeting if meeting.invitee_id.nil? else Meeting.new(user_id: meeting.user.id, date_time: meeting.date_time, location_type: meeting.location_type, nickname: "", relay_number: meeting.relay_number)
 
         meeting.invitee_id = user.id
 
