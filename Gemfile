@@ -15,6 +15,9 @@ gem 'rack-cors', :require => 'rack/cors'
 gem 'vcardigan'
 gem 'google_places'
 gem 'authy'
+gem 'rack', '~> 2.0.1'
+gem 'rspec'
+gem 'phonelib'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
