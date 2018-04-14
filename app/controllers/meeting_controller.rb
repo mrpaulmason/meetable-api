@@ -7,7 +7,7 @@ class MeetingController < ApplicationController
 
         meeting.invitee_id = user.id
 
-				meeting.relay_number = Meeting.choose_relay initiator: meeting.user, acceptor: user
+				meeting.relay_number = Meeting.choose_relay(meeting.user, user)
 
         if meeting.save
             begin
@@ -80,4 +80,14 @@ class MeetingController < ApplicationController
         render :json => APIResponse.response(type: "invalid_referral_code") and return unless meeting = Meeting.find_by_share_code(params[:id])
         render :json => Places.list(category: params[:category])
     end
+
+		def genrelay
+			  render :json => APIResponse.response(type: "invalid_referral_code") and return unless meeting = Meeting.find_by_share_code(params[:id])
+				begin
+					relay_number = Meeting.choose_relay(meeting.user)
+					render :json => {'relay_number': relay_number}
+				rescue => e
+					render :json => APIResponse.response(type: "error")
+				end
+		end
 end

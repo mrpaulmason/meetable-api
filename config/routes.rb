@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   	match 'meetings/:id/accept', to: 'meeting#accept', via: :post
     match 'meetings/:id/confirm', to: 'meeting#confirm', via: :post
   	match 'meetings/:id/locations', to: 'meeting#locations', via: :get
+    match 'meetings/:id/genrelay', to: 'meeting#genrelay', via: :get
   	post "/waitlist", to: "waitlist#create"
   	resource :sms do
 	  	collection do
