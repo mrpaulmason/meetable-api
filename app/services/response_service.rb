@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 class ResponseService
 	def initialize(user:, wit:, relay_number:)
 		@user = user
