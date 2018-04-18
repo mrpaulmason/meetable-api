@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 class ResponseService
 	def initialize(user:, wit:, relay_number:)
 		@user = user
@@ -30,6 +32,7 @@ class ResponseService
 		if inviter_meeting
 			invitee = User.find(inviter_meeting.invitee_id)
 			to_number = invitee.phone_number
+			relay_number = @relay_number
 			if @wit[:_text].start_with?("/")
 				message = " #{@wit[:_text]}"
 			else
@@ -38,14 +41,22 @@ class ResponseService
 		elsif invitee_meeting
 			inviter = User.find(invitee_meeting.user_id)
 			to_number = inviter.phone_number
+			relay_number = @relay_number
 			if @wit[:_text] == @wit[:_text].upcase
 				message = "🐚 #{@wit[:_text]}"
 			else
 				message = "[#{invitee_meeting.nickname}] #{@wit[:_text]}"
 			end
+		else
+			# this is an accept request from shortstop
+			m = Meeting.find_by(:relay_number => @relay_number, :invitee_id => nil)
+			Meeting.accept(m, @user)
+			to_number = m.user.phone_number
+			relay_number = Meeting.find(m.id).relay_number
+			message = "[#{m.nickname}] #{@wit[:_text]}"
 		end
 
-		r = Message.new(from: @relay_number, to: to_number, message: message)
+		r = Message.new(from: relay_number, to: to_number, message: message)
 		r.save
 	end
 end

@@ -85,6 +85,8 @@ class MeetingController < ApplicationController
 			  render :json => APIResponse.response(type: "invalid_referral_code") and return unless meeting = Meeting.find_by_share_code(params[:id])
 				begin
 					relay_number = Meeting.choose_relay(meeting.user)
+					meeting.relay_number = relay_number
+					meeting.save
 					render :json => {'relay_number': relay_number}
 				rescue => e
 					render :json => APIResponse.response(type: "error")
