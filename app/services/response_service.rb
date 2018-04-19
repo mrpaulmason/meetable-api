@@ -15,11 +15,12 @@ class ResponseService
 			relay.created_at = DateTime.now
 			relay.update_at = DateTime.now
 		end
-		m = Meeting.new(user_id: @user.id, date_time: date_time, location_type: location_type, nickname: nickname, relay_number: @relay_number)
+		relay_number = Meeting.choose_relay
+		m = Meeting.new(user_id: @user.id, date_time: date_time, location_type: location_type, nickname: nickname, relay_number: relay_number)
 		m.save
-		r = Message.new(from: @relay_number, to: @user.phone_number, message: "Send this link to #{nickname}:")
+		r = Message.new(from: relay_number, to: @user.phone_number, message: "Send this link to #{nickname}:")
 		r.save
-		t = Message.new(from: @relay_number, to: @user.phone_number, message: "http://meetable.ai/#{m.share_code}")
+		t = Message.new(from: relay_number, to: @user.phone_number, message: "http://meetable.ai/#{m.share_code}")
 		t.save
 	end
 
@@ -47,10 +48,10 @@ class ResponseService
 			end
 		else
 			# this is an accept request from shortstop
-			m = Meeting.find_by(:relay_number => @relay_number, :invitee_id => nil)
+			m = Meeting.find_by(:relay_number => @relay_number)
 			Meeting.accept(m, @user)
 			to_number = m.user.phone_number
-			relay_number = Meeting.find(m.id).relay_number
+			relay_number = m.relay_number
 			message = "[#{m.nickname}] #{@wit[:_text]}"
 		end
 
