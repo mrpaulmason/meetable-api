@@ -16,15 +16,12 @@ class Meeting < ApplicationRecord
 		self.location_type = self.location_type.strip unless self.location_type.nil?
 	end
 
-	def self.choose_relay(initiator, acceptor=nil)
-		user_ids = []
-		user_ids.push(initiator.id)
-		user_ids.push(acceptor.id) unless acceptor == nil
+	def self.choose_relay
 
 		Relay.where("active = ?", true).each do |relay|
-			return relay.number unless Meeting.where(:relay_number => relay.number, :user_id => user_ids)
-								.or(Meeting.where(:relay_number => relay.number, :invitee_id => user_ids)
-			).count != 0 or (user_ids.length == 1 and Meeting.where(:relay_number => relay.number, :invitee_id => nil).count != 0)
+			return relay.number unless Meeting.where(
+																	:relay_number => relay.number
+			).count != 0
 		end
 		# if we reach this point, a new number needs to be acquired
 		# return last number for now
@@ -35,8 +32,6 @@ class Meeting < ApplicationRecord
 		meeting = if meeting.invitee_id.nil? then meeting else Meeting.new(user_id: meeting.user.id, date_time: meeting.date_time, location_type: meeting.location_type, nickname: "") end
 
 		meeting.invitee_id = user.id
-
-		meeting.relay_number = Meeting.choose_relay(meeting.user, user)
 
 		if meeting.save
 				begin

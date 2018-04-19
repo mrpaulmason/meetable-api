@@ -7,8 +7,6 @@ class MeetingController < ApplicationController
 
         meeting.invitee_id = user.id
 
-				meeting.relay_number = Meeting.choose_relay(meeting.user, user)
-
         if meeting.save
             begin
                 #message = Message.new(to: user.phone_number, from: meeting.relay_number, message: "Your Meetable verification code is: #{meeting.confirmation_code}")
@@ -84,10 +82,7 @@ class MeetingController < ApplicationController
 		def genrelay
 			  render :json => APIResponse.response(type: "invalid_referral_code") and return unless meeting = Meeting.find_by_share_code(params[:id])
 				begin
-					relay_number = Meeting.choose_relay(meeting.user)
-					meeting.relay_number = relay_number
-					meeting.save
-					render :json => {'relay_number': relay_number}
+					render :json => {'relay_number': meeting.relay_number}
 				rescue => e
 					render :json => APIResponse.response(type: "error")
 				end
