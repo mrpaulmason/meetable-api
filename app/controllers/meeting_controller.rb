@@ -82,7 +82,7 @@ class MeetingController < ApplicationController
 		def genrelay
 			  render :json => APIResponse.response(type: "invalid_referral_code") and return unless meeting = Meeting.find_by_share_code(params[:id])
 				begin
-					render :json => {'relay_number': meeting.relay_number}
+					render :json => {'relay_number': meeting.relay_number.sub("+","")}
 				rescue => e
 					render :json => APIResponse.response(type: "error")
 				end
