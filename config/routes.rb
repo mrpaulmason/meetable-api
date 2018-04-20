@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :meetings
+    resources :messages
+    resources :places
+    resources :relays
+    resources :users
+    resources :waitlists
+
+    root to: "meetings#index"
+  end
+
   	get "/ping", to: proc { [200, {}, ['']] }
   	get "/vcard/:relay", to: "vcard#card"
   	match 'meetings/:id/accept', to: 'meeting#accept', via: :post
