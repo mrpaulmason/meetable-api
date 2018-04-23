@@ -18,9 +18,9 @@ class ResponseService
 		relay_number = Meeting.choose_relay
 		m = Meeting.new(user_id: @user.id, date_time: date_time, location_type: location_type, nickname: nickname, relay_number: relay_number)
 		m.save
-		r = Message.new(from: relay_number, to: @user.phone_number, message: "Send this link to #{nickname}:")
+		r = Message.new(from: @relay_number, to: @user.phone_number, message: "Send this link to #{nickname}:")
 		r.save
-		t = Message.new(from: relay_number, to: @user.phone_number, message: "http://meetable.ai/#{m.share_code}")
+		t = Message.new(from: @relay_number, to: @user.phone_number, message: "http://meetable.ai/#{m.share_code}")
 		t.save
 	end
 
