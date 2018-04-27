@@ -10,6 +10,8 @@ class SmsController < ApplicationController
 		responses = []
 		if message.start_with?("+")
 			response_service.new_meeting
+		elsif message.start_with?("//")
+			response_service.administrate
 		else
 			response_service.relay
 		end
