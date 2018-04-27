@@ -13,6 +13,7 @@ class RelayDashboard < Administrate::BaseDashboard
     active: Field::Boolean,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    released: Field::Boolean
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -23,8 +24,8 @@ class RelayDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :id,
     :number,
-    :active,
     :created_at,
+    :released,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -35,6 +36,7 @@ class RelayDashboard < Administrate::BaseDashboard
     :active,
     :created_at,
     :updated_at,
+    :released,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -42,7 +44,7 @@ class RelayDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :number,
-    :active,
+    :released,
   ].freeze
 
   # Overwrite this method to customize how relays are displayed
