@@ -65,13 +65,11 @@ class ResponseService
 			relay = Relay.find_by_number(@relay_number)
 			relay.released = true
 			relay.save
-			r = Message.new(from: relay.number, to: @user.phone_number, message: "You have successfully released this relay")
-			r.save
-			sleep(0.5)
+
 			active_relays = Relay.where(active: true, released: false).pluck(:number)
 			active_meeting_count = Meeting.where(:relay_number => active_relays).count
 			nevnum_count = active_relays.count - active_meeting_count
-			r = Message.new(from: relay.number, to: @user.phone_number, message: "#{nevnum_count} nevernums remaining")
+			r = Message.new(from: relay.number, to: @user.phone_number, message: "You have successfully released this relay. #{nevnum_count} nevernums remaining")
 			r.save
 		end
 	end

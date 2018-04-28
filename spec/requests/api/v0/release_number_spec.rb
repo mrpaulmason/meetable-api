@@ -30,14 +30,11 @@ describe "ReleaseNumberCommand API" do
     # assert that the "released" flag of remaining relay numbers are still false
     expect(Relay.where(released:false).count).to eq(3)
 
-    # assert that two messages are created which have the following information:
-    expect(Message.all.count).to eq(2)
-    # 1) Message stating "You have successfully released [NUMBER]"
-    msgs = Message.where(to: '+18888888888', from: release_number, message: "You have successfully released this relay")
-    expect(msgs.count).to eq(1)
-    # 2) Message stating "x nevernums remaining"
+    # assert that one message created with confirmation and nevnum remaining status
+    expect(Message.all.count).to eq(1)
+
     nevernum_count = Relay.where(active: true, released: false).count - Meeting.where(relay_number: Relay.where(active: true, released: false).pluck(:number)).distinct.count
-    msgs = Message.where(to: '+18888888888', from: release_number, message: "#{nevernum_count} nevernums remaining")
+    msgs = Message.where(to: '+18888888888', from: release_number, message: "You have successfully released this relay. #{nevernum_count} nevernums remaining")
     expect(msgs.count).to eq(1)
   end
 end
