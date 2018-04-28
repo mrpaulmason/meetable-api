@@ -21,7 +21,7 @@ class ResponseService
 		r = Message.new(from: @relay_number, to: @user.phone_number, message: "Send this link to #{nickname}:")
 		r.save
 		sleep(0.5)
-		t = Message.new(from: @relay_number, to: @user.phone_number, message: "http://meetable.ai/#{m.share_code}")
+		t = Message.new(from: @relay_number, to: @user.phone_number, message: "https://meetable.ai/#{m.share_code}")
 		t.save
 	end
 
