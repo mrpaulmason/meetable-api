@@ -1,15 +1,15 @@
 class Places
 	class << self
-        def list(category:)
-            places = Place.where("'#{category}' = ANY (categories)")
+        def list(category: nil)
+            places = category != nil ? Place.where("'#{category}' = ANY (categories)") : Place.all
             output = {locations: []}
             places.each do |place|
             	location = {
-                    name: place.name, 
-                    address: place.address_1, 
-                    city: place.city, 
-                    zip: place.zip, 
-                    latitude: place.lat, 
+                    name: place.name,
+                    address: place.address_1,
+                    city: place.city,
+                    zip: place.zip,
+                    latitude: place.lat,
                     longitude: place.long,
                     google_id: place.google_id,
                     categories: place.categories,
@@ -21,7 +21,7 @@ class Places
         end
 
         def google
-            GooglePlaces::Client.new(ENV['GOOGLE_API']) 
+            GooglePlaces::Client.new(ENV['GOOGLE_API'])
         end
 
         def parse
@@ -44,16 +44,16 @@ class Places
                     place.zip = record.address_components.last["short_name"]
                     place.lat = record.lat
                     place.long = record.lng
-                    
+
                     if !place.types.include? type
                         place.types.push(type) if type
                     end
-                    if !place.categories.include? category 
+                    if !place.categories.include? category
                         place.categories.push(category) if category
                     end
-                    
+
                     place.save
-                end 
+                end
             end
         end
     end
