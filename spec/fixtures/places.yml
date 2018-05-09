@@ -1,0 +1,220 @@
+one:
+  name: Attaboy
+  address_1: 134 Eldridge St
+  address_2:
+  city: Manhattan
+  zip: '10002'
+  lat: '40.718882'
+  long: "-73.99137999999999"
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2018-01-25 19:21:17.919446000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2018-01-26 18:52:37.611079000 Z
+    zone: *2
+    time: *3
+  categories:
+  - drinks
+  google_id: ChIJDbQMBIdZwokRVS4L8B8V5SA
+  types:
+  - Cocktails
+two:
+  name: Jupiter Disco
+  address_1: 1237 Flushing Ave
+  address_2:
+  city: East Williamsburg
+  zip: '11237'
+  lat: '40.70813039999999'
+  long: "-73.9235226"
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2018-01-25 19:21:18.799498000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2018-01-26 18:52:38.414217000 Z
+    zone: *2
+    time: *3
+  categories:
+  - drinks
+  google_id: ChIJeXkk5qdewokRPjp8s5BDauo
+  types:
+  - Cocktails
+three:
+  name: The Rum House
+  address_1: 228 W 47th St
+  address_2:
+  city: Manhattan
+  zip: '1401'
+  lat: '40.759711'
+  long: "-73.986307"
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2018-01-25 19:21:19.716512000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2018-01-26 18:52:39.380779000 Z
+    zone: *2
+    time: *3
+  categories:
+  - drinks
+  google_id: ChIJq38lzVVYwokRSQFHWasfeqc
+  types:
+  - Cocktails
+four:
+  name: Elsa
+  address_1: 136 Atlantic Ave
+  address_2:
+  city: Cobble Hill
+  zip: '11201'
+  lat: '40.69025999999999'
+  long: "-73.995385"
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2018-01-25 19:21:20.068944000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2018-01-26 18:52:39.645824000 Z
+    zone: *2
+    time: *3
+  categories:
+  - drinks
+  google_id: ChIJtRe2iHhZwokRIxa-bPRoumg
+  types:
+  - Cocktails
+five:
+  name: Robert Bar
+  address_1: 104 Bond St
+  address_2:
+  city: Boerum Hill
+  zip: '2246'
+  lat: '40.68662339999999'
+  long: "-73.9851595"
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2018-01-25 19:21:20.813049000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2018-01-26 18:52:40.331973000 Z
+    zone: *2
+    time: *3
+  categories:
+  - drinks
+  google_id: ChIJy02UfE1awokR8dS5zwDOTyI
+  types:
+  - Cocktails
+six:
+  name: The Up & Up
+  address_1: 116 Macdougal St
+  address_2:
+  city: Manhattan
+  zip: '10012'
+  lat: '40.7297439'
+  long: "-74.00058469999999"
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2018-01-25 19:21:21.218587000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2018-01-26 18:52:40.664264000 Z
+    zone: *2
+    time: *3
+  categories:
+  - drinks
+  google_id: ChIJN0f2iJFZwokRt53h0ISm3eE
+  types:
+  - Cocktails
+seven:
+  name: Mace
+  address_1: 649 E 9th St
+  address_2:
+  city: Manhattan
+  zip: '10009'
+  lat: '40.7255285'
+  long: "-73.9781384"
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2018-01-25 19:21:21.932648000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2018-01-26 18:52:41.266685000 Z
+    zone: *2
+    time: *3
+  categories:
+  - drinks
+  google_id: ChIJ27CKRHdZwokRAMnhRQri-bU
+  types:
+  - Cocktails
+eight:
+  name: Café Grumpy - Lower East Side
+  address_1: 13 Essex St
+  address_2:
+  city: Manhattan
+  zip: '10011'
+  lat: '40.71518299999999'
+  long: "-73.990259"
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2018-01-25 19:21:23.410349000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2018-01-26 18:52:43.875182000 Z
+    zone: *2
+    time: *3
+  categories:
+  - coffee
+  google_id: ChIJka6YlSlawokRMhN3aYCZWG0
+  types:
+  - Coffee shop near park
+nine:
+  name: Birch Coffee
+  address_1: 134 1/2 E 62nd St
+  address_2:
+  city: Manhattan
+  zip: '10065'
+  lat: '40.7638094'
+  long: "-73.9666075"
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2018-01-25 19:21:23.625689000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2018-01-26 18:52:44.032888000 Z
+    zone: *2
+    time: *3
+  categories:
+  - coffee
+  google_id: ChIJK1yXQO9YwokRPj9clv8k-gQ
+  types:
+  - Coffee shop near park
+ten:
+  name: Blue Bottle Coffee
+  address_1: 54 W 40th St
+  address_2:
+  city: Manhattan
+  zip: '10018'
+  lat: '40.75306'
+  long: "-73.984123"
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2018-01-25 19:21:23.918133000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2018-01-26 18:52:44.384126000 Z
+    zone: *2
+    time: *3
+  categories:
+  - coffee
+  google_id: ChIJi_eyi6pZwokRFvY-ucXUXEk
+  types:
+  - Coffee shop near park
