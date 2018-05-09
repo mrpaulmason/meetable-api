@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     match 'meetings/:id/confirm', to: 'meeting#confirm', via: :post
   	match 'meetings/:id/locations', to: 'meeting#locations', via: :get
     match 'meetings/:id/genrelay', to: 'meeting#genrelay', via: :get
+    match 'places', to: 'place#index', via: :get
   	post "/waitlist", to: "waitlist#create"
   	resource :sms do
 	  	collection do
