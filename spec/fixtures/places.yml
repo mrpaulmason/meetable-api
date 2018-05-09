@@ -62,8 +62,7 @@ three:
   categories:
   - drinks
   google_id: ChIJq38lzVVYwokRSQFHWasfeqc
-  types:
-  - Cocktails
+  
 four:
   name: Elsa
   address_1: 136 Atlantic Ave

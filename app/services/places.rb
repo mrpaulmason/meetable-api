@@ -1,7 +1,18 @@
 class Places
 	class << self
-        def list(category: nil)
-            places = category != nil ? Place.where("'#{category}' = ANY (categories)") : Place.all
+        def list(category: nil, attribute: nil)
+						places = []
+						if category == nil and attribute == nil
+							places += Place.all
+						end
+						if category != nil and attribute != nil
+							places += Place.where("'#{category}' = ANY (categories) and '#{attribute}' = ANY (types)")
+						elsif category != nil
+							places += Place.where("'#{category}' = ANY (categories)")
+						elsif attribute != nil
+							places += Place.where("'#{attribute}' = ANY (types)")
+						end
+
             output = {locations: []}
             places.each do |place|
             	location = {
