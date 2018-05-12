@@ -60,6 +60,7 @@ class ResponseService
 			# this is an accept request from shortstop
 			# the relay number is all that is needed to find the meeting
 			m = Meeting.find_by(:relay_number => @relay_number)
+
 			if Meeting.accept(m, @user)
 				to_number = m.user.phone_number
 				relay_number = m.relay_number
