@@ -1,4 +1,7 @@
 class Messages
+	# This class essentially just polls the db for new messages and sends
+	# messages that have not yet been sent and the current time is
+	# after the value of the send_at attribute of the record
 	def self.send
 		messages_to_send = Message.where("sent = ? AND send_at <= ?", false, Time.now)
 		Rails.logger.info "queue started"

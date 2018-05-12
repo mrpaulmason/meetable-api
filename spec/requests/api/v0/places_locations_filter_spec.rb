@@ -16,6 +16,7 @@ describe "PlacesLocationFilter API" do
 
     expect(json['locations'].length).to eq(3)
 
+    # this category doesn't exits
     get "/places?category=sports"
 
     json = JSON.parse(response.body)
@@ -25,6 +26,7 @@ describe "PlacesLocationFilter API" do
 
     expect(json['locations'].length).to eq(0)
 
+    #without any filtering all places are returned
     get "/places"
 
     json = JSON.parse(response.body)
@@ -52,6 +54,7 @@ describe "PlacesLocationFilter API" do
 
     expect(json['locations'].length).to eq(7)
 
+    #ensure its possible to filter on both category and attribute
     get "/places?category=drinks&attribute=Cocktails"
 
     json = JSON.parse(response.body)

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # added by administrate gem
   namespace :admin do
     resources :meetings
     resources :messages

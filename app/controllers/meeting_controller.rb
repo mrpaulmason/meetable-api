@@ -1,38 +1,12 @@
 class MeetingController < ApplicationController
 	def accept
+				# this code represents the point at which a meeting request is finalized
+				# in the sense that the invitee has provided his or her number
         render :json => APIResponse.response(type: "invalid_referral_code") and return unless meeting = Meeting.find_by_share_code(params[:id])
         render :json => APIResponse.response(type: "invalid_phone_number") and return unless user = User.find_or_create_by(phone_number: "+1#{params['phone_number']}")
 
-        meeting = if meeting.invitee_id.nil? then meeting else Meeting.new(user_id: meeting.user.id, date_time: meeting.date_time, location_type: meeting.location_type, nickname: "") end
 
-        meeting.invitee_id = user.id
-
-        if meeting.save
-            begin
-                #message = Message.new(to: user.phone_number, from: meeting.relay_number, message: "Your Meetable verification code is: #{meeting.confirmation_code}")
-                #message.save
-								message = Message.new(to: meeting.user.phone_number, from: meeting.relay_number, message: "#{meeting.nickname} submitted number")
-                message.save
-
-                message = Message.new(to: user.phone_number, from: meeting.relay_number, message: "Welcome to Meetable! Use this number to text Paul. Or text PAUSE / STOP anytime. Save this contact and add color to your inbox!")
-                message.save
-
-                message = Message.new(to: user.phone_number, from: meeting.relay_number, media_url: "https://meetable-api.herokuapp.com/vcard/#{meeting.relay_number}")
-                message.save
-
-                message = Message.new(to: meeting.user.phone_number, from: meeting.relay_number, message: "#{meeting.nickname} received welcome msgs")
-                message.save
-
-                message = Message.new(to: user.phone_number, from: meeting.relay_number, message: "[Paul] Hi #{meeting.nickname.split(" ").first.capitalize}")
-                message.save
-
-								message = Message.new(to: meeting.user.phone_number, from: meeting.relay_number, message: "Hi msg sent to #{meeting.nickname.split(" ").first.capitalize} (relay #{Meeting.where(:relay_number => Relay.where(active: true).pluck(:number)).distinct.count})")
-								message.save
-            rescue => e
-                puts e.message
-                render :json => APIResponse.response(type: "twilio_error") and return
-            end
-
+        if Meeting.accept(meeting, user)
             render :json => APIResponse.response(type: "ok") and return
         end
 
@@ -40,6 +14,8 @@ class MeetingController < ApplicationController
     end
 
     def confirm
+				# confirm method built before introduction of shortstop which implicitly indicates authorized use of the number
+				# leaving the code in case it becomes useful at some point in the future
         render :json => APIResponse.response(type: "invalid_referral_code") and return unless meeting = Meeting.find_by_share_code(params[:id])
         render :json => APIResponse.response(type: "invalid_confirmation_code") and return unless meeting.confirmation_code == params[:confirmation_code].to_i
         render :json => APIResponse.response(type: "invalid_phone_number") and return unless user = User.find(meeting.invitee_id)
@@ -74,12 +50,8 @@ class MeetingController < ApplicationController
         render :json => APIResponse.response(type: "error")
     end
 
-    def locations
-        render :json => APIResponse.response(type: "invalid_referral_code") and return unless meeting = Meeting.find_by_share_code(params[:id])
-        render :json => Places.list(category: params[:category])
-    end
-
 		def genrelay
+				# accepts share code from endpoint and returns the relay number associated to the meeting
 			  render :json => APIResponse.response(type: "invalid_referral_code") and return unless meeting = Meeting.find_by_share_code(params[:id])
 				begin
 					render :json => {'relay_number': meeting.relay_number.sub("+1","")}
