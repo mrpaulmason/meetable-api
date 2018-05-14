@@ -3,7 +3,7 @@ class Meeting < ApplicationRecord
 	before_create :generate_share_code
 	before_save :clean
 	belongs_to :user
-	has_many :users
+	has_many :meeting_participants
 	has_many :participants, :through => :meeting_participants, :source => :user
 
 	def generate_share_code
