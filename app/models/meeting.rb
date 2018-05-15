@@ -37,9 +37,9 @@ class Meeting < ApplicationRecord
 		# create a new meeting if the meeting already has an invitee_id
 		# originally introduced as a Y Combinator hack
 		# it allows a meeting relay number to be re-used if that becomes useful
-		meeting = if meeting.invitee_id.nil? then meeting else Meeting.new(user_id: meeting.user.id, date_time: meeting.date_time, location_type: meeting.location_type, nickname: "") end
+		meeting = if meeting.participants.length == 0 then meeting else Meeting.new(user_id: meeting.user.id, date_time: meeting.date_time, location_type: meeting.location_type, nickname: "") end
 
-		meeting.invitee_id = user.id
+		meeting.participants << user
 
 		if meeting.save
 			begin
