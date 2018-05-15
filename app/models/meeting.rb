@@ -41,7 +41,7 @@ class Meeting < ApplicationRecord
 				# new meeting created
 				# need to update meeting participants and creator for this new meeting
 				meeting.participants << in_meeting.participants[0]
-				MeetingParticipant.where(:meeting => m).update_all(:creator => true)
+				MeetingParticipant.where(:meeting => meeting).update_all(:creator => true)
 		end
 		meeting.participants << user
 
