@@ -19,8 +19,8 @@ class ResponseService
 		relay_number = Meeting.choose_relay
 		m = Meeting.new(date_time: date_time, location_type: location_type, nickname: nickname, relay_number: relay_number)
 		m.participants << @user
-		mp = MeetingParticipant.where(:user => @user, :meeting => m).update_all(:creator => true)
 		m.save
+		MeetingParticipant.where(:user => @user, :meeting => m).update_all(:creator => true)
 		r = Message.new(from: hotline, to: @user.phone_number, message: "Send this link to #{nickname}:")
 		r.save
 		sleep(0.5)
