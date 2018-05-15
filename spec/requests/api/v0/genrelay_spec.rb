@@ -12,8 +12,9 @@ describe "RelayService API" do
                 { :number => '+13477676800', :active => true }
               ]
     )
-
-    m = Meeting.create(user_id: user.id, date_time: DateTime.now, location_type: "bar", nickname: "user1", relay_number: '+13477652900')
+    m = Meeting.create(date_time: DateTime.now, location_type: "bar2", nickname: "user1", relay_number: '+13477652900')
+    m.participants << user
+    mp = MeetingParticipant.where(:user => user, :meeting => m).update_all(:creator => true)
     share_code = m.share_code
 
     get "/meetings/#{m.share_code}/genrelay"
