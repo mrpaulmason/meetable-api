@@ -13,7 +13,7 @@ describe "AcceptOnReplyService API" do
 
     m = Meeting.find_by_share_code(share_code)
 
-    expect(m.invitee_id).to eq(invitee.id)
+    expect(m.participants).to include(invitee)
     expect(m.relay_number).to eq(relay_number)
 
     msgs = Message.where(:to => user.phone_number, :from => m.relay_number, :message => "[#{m.nickname}] This is cool!")

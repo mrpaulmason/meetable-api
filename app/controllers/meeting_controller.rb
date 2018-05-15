@@ -18,7 +18,7 @@ class MeetingController < ApplicationController
 				# leaving the code in case it becomes useful at some point in the future
         render :json => APIResponse.response(type: "invalid_referral_code") and return unless meeting = Meeting.find_by_share_code(params[:id])
         render :json => APIResponse.response(type: "invalid_confirmation_code") and return unless meeting.confirmation_code == params[:confirmation_code].to_i
-        render :json => APIResponse.response(type: "invalid_phone_number") and return unless user = User.find(meeting.invitee_id)
+        render :json => APIResponse.response(type: "invalid_phone_number") and return unless meeting.participants.length > 0 and user = User.find(meeting.participants[0])
 
         if meeting.confirmation_code == params[:confirmation_code].to_i
             begin
