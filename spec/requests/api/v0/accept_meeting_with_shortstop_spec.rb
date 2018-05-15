@@ -5,7 +5,9 @@ describe "AcceptOnReplyService API" do
     user = User.find_or_create_by(phone_number: "+18888888888")
     Relay.create([{ :number => '+10000000000', :active => true }, { :number => '+10000000001', :active => true }])
     relay_number = Meeting.choose_relay
-    m = Meeting.create(user_id: user.id, date_time: DateTime.now, location_type: "bar", nickname: "user1", relay_number: relay_number)
+    m = Meeting.create(date_time: DateTime.now, location_type: "bar", nickname: "user1", relay_number: relay_number)
+    m.participants << user
+    MeetingParticipant.where(:user => user, :meeting => m).update_all(:creator => true)
     share_code = m.share_code
     invitee = User.find_or_create_by(phone_number: "+17777777777")
     params = { "From": "#{invitee.phone_number}", "To": relay_number, "Body": "This is cool!" }
@@ -13,6 +15,7 @@ describe "AcceptOnReplyService API" do
 
     m = Meeting.find_by_share_code(share_code)
 
+    expect(m.participants).to include(user)
     expect(m.participants).to include(invitee)
     expect(m.relay_number).to eq(relay_number)
 

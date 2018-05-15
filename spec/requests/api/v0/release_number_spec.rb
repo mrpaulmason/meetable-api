@@ -14,7 +14,10 @@ describe "ReleaseNumberCommand API" do
               ]
     )
     release_number = '+12222222222'
-    Meeting.create(user_id: user.id, date_time: DateTime.now, location_type: "bar", nickname: "user1", relay_number: '+11111111111')
+    m = Meeting.create(date_time: DateTime.now, location_type: "bar", nickname: "user1", relay_number: '+11111111111')
+    m.participants << user
+    mp = MeetingParticipant.where(:user => user, :meeting => m).update_all(:creator => true)
+
     # assert that all relay numbers have a released flag value set to false
     expect(Relay.where(released: false).count).to eq(4)
 

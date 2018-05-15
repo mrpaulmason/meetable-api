@@ -17,7 +17,9 @@ class ResponseService
 		date_time = @wit[:entities].has_key?(:datetime) ? @wit[:entities][:datetime].first[:value] : nil
 
 		relay_number = Meeting.choose_relay
-		m = Meeting.new(user_id: @user.id, date_time: date_time, location_type: location_type, nickname: nickname, relay_number: relay_number)
+		m = Meeting.new(date_time: date_time, location_type: location_type, nickname: nickname, relay_number: relay_number)
+		m.participants << @user
+		mp = MeetingParticipant.where(:user => @user, :meeting => m).update_all(:creator => true)
 		m.save
 		r = Message.new(from: hotline, to: @user.phone_number, message: "Send this link to #{nickname}:")
 		r.save
@@ -29,12 +31,12 @@ class ResponseService
 	def relay
 		# attempting to lookup meeting based on relay number and which role
 		# associated user fulfills on meeting
-		inviter_meeting = Meeting.where(:relay_number => @relay_number, :user_id => @user.id).last
-		invitee_meeting = Meeting.joins(:participants).where(:relay_number => @relay_number, :meeting_participants => {user_id: @user.id}).last
+		inviter_meeting = Meeting.joins(:participants).where(:relay_number => @relay_number, :meeting_participants => {:user => @user, :creator => true}).last
+		invitee_meeting = Meeting.joins(:participants).where(:relay_number => @relay_number, :meeting_participants => {:user => @user, :creator => false}).last
 
 		if inviter_meeting
 			# message is from the inviter
-			invitee = User.find(inviter_meeting.invitee_id)
+			invitee = MeetingParticipant.find_by(:meeting => inviter_meeting, :creator => false).user
 			to_number = invitee.phone_number
 			relay_number = @relay_number
 			if @wit[:_text].start_with?("/")
@@ -46,7 +48,7 @@ class ResponseService
 			end
 		elsif invitee_meeting
 			# message is from the invitee
-			inviter = User.find(invitee_meeting.user_id)
+			inviter = MeetingParticipant.find_by(:meeting => invitee_meeting, :creator => true).user
 			to_number = inviter.phone_number
 			relay_number = @relay_number
 			if @wit[:_text] == @wit[:_text].upcase
@@ -62,7 +64,8 @@ class ResponseService
 			m = Meeting.find_by(:relay_number => @relay_number)
 
 			if Meeting.accept(m, @user)
-				to_number = m.user.phone_number
+				inviter = MeetingParticipant.find_by(:meeting => m, :creator => true).user
+				to_number = inviter.phone_number
 				relay_number = m.relay_number
 				message = "[#{m.nickname}] #{@wit[:_text]}"
 			else
