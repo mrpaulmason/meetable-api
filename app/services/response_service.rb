@@ -30,7 +30,7 @@ class ResponseService
 		# attempting to lookup meeting based on relay number and which role
 		# associated user fulfills on meeting
 		inviter_meeting = Meeting.where(:relay_number => @relay_number, :user_id => @user.id).last
-		invitee_meeting = Meeting.joins(:participants).where(:relay_number => @relay_number, meeting_participants: {user_id: @user.id}).last
+		invitee_meeting = Meeting.joins(:participants).where(:relay_number => @relay_number, :meeting_participants => {user_id: @user.id}).last
 
 		if inviter_meeting
 			# message is from the inviter
