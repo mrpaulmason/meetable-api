@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   	get "/vcard/:relay", to: "vcard#card"
   	match 'meetings/:id/accept', to: 'meeting#accept', via: :post
     match 'meetings/:id/confirm', to: 'meeting#confirm', via: :post
+    match 'meetings/:id/locations/:place_id', to: 'meeting#update_locations', via: :post
   	match 'meetings/:id/locations', to: 'meeting#locations', via: :get
     match 'meetings/:id/genrelay', to: 'meeting#genrelay', via: :get
     match 'places', to: 'place#index', via: :get

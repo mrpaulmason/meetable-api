@@ -59,4 +59,11 @@ class MeetingController < ApplicationController
 					render :json => APIResponse.response(type: "error")
 				end
 		end
+
+		def update_locations
+				render :json => APIResponse.response(type: "invalid_plan_code") and return unless meeting = MeetingParticipant.find_by_plan_code(params[:id]).meeting
+				render :json => APIResponse.response(type: "invalid_location_id") and return unless meeting = Place.find(params[:place_id])
+
+				render :json => APIResponse.response(type: "ok") and return
+		end
 end
