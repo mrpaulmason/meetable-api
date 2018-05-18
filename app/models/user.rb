@@ -3,4 +3,5 @@ class User < ApplicationRecord
 	validates :phone_number, :presence => true
 	has_many :meeting_participants
   has_many :meetings, :through => :meeting_participants
+	has_many :meeting_locations
 end
