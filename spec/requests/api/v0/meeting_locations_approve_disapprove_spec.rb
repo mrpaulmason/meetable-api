@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "PlacesLocationFilter API" do
+describe "MeetingLocationApprovalDisapproval API" do
 
   fixtures :places
 
