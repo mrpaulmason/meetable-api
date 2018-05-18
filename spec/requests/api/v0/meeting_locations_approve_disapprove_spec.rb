@@ -30,11 +30,11 @@ describe "PlacesLocationFilter API" do
     expect(response).to be_success
 
     # check that meeting location approved by user
-    meet_loc_count = MeetingLocation.where(:place => place, :meeting => m, :user => user).count
+    meet_loc_count = MeetingLocation.joins(:meeting_participant).where(:place => place, :meeting_participants => { :meeting => m, :user => user}).count
     expect(meet_loc_count).to eq(1)
 
     # ensure that meeting location approval not registered for user2
-    meet_loc_count = MeetingLocation.where(:place => place, :meeting => m, :user => user2).count
+    meet_loc_count = MeetingLocation.joins(:meeting_participant).where(:place => place, :meeting_participants => { :meeting => m, :user => user2}).count
     expect(meet_loc_count).to eq(0)
 
     # API receives request indicating user wants to disapprove location
@@ -47,7 +47,7 @@ describe "PlacesLocationFilter API" do
     expect(response).to be_success
 
     # check that no meeting location approvals present for this place
-    meet_loc_count = MeetingLocation.where(:place => place, :meeting => m).count
+    meet_loc_count = MeetingLocation.joins(:meeting_participant).where(:place => place, :meeting_participants => { :meeting => m}).count
     expect(meet_loc_count).to eq(0)
 
     # API receives request indicating user2 wants to approve location
@@ -60,11 +60,11 @@ describe "PlacesLocationFilter API" do
     expect(response).to be_success
 
     # check that meeting location approved by user2
-    meet_loc_count = MeetingLocation.where(:place => place, :meeting => m, :user => user2).count
+    meet_loc_count = MeetingLocation.joins(:meeting_participant).where(:place => place, :meeting_participants => { :meeting => m, :user => user2}).count
     expect(meet_loc_count).to eq(1)
 
     # ensure that meeting location approval not registered for user
-    meet_loc_count = MeetingLocation.where(:place => place, :meeting => m, :user => user).count
+    meet_loc_count = MeetingLocation.joins(:meeting_participant).where(:place => place, :meeting_participants => { :meeting => m, :user => user}).count
     expect(meet_loc_count).to eq(0)
   end
 end
