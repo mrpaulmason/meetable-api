@@ -2,8 +2,6 @@ require 'rails_helper'
 
 describe "MeetingAvailbilityEndpoint API" do
 
-  fixtures :places
-
   it 'sends availability information to API' do
     user = User.find_or_create_by(phone_number: "+18888888888")
     Relay.create([{ :number => '+10000000000', :active => true }, { :number => '+10000000001', :active => true }])
