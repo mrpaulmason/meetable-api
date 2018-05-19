@@ -70,4 +70,11 @@ class MeetingController < ApplicationController
 				end
 				render :json => APIResponse.response(type: "ok") and return
 		end
+
+		def update_availability
+				render :json => APIResponse.response(type: "invalid_plan_code") and return unless meeting_participant = MeetingParticipant.find_by_plan_code(params[:plan_code])
+				MeetingAvailability.where(:meeting_participant => meeting_participant, :active => true).update_all(:active => false)
+				MeetingAvailability.create(:meeting_participant => meeting_participant, :start_time => params[:start_time], :start_buffer => params[:start_buffer], :end_buffer => params[:end_buffer], :active => true)
+				render :json => APIResponse.response(type: "ok") and return
+		end
 end
